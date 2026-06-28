@@ -4180,8 +4180,7 @@ h1.qeel_title i {
 }
 
 .group-card .group-name {
-  font-family: 'Nebula', var(--font-3);
-  text-transform: uppercase;
+  font-family: 'Ballet', var(--font-3);
   font-size: var(--small-size);
   letter-spacing: 1px;
   color: var(--textColorAccent);
@@ -4191,20 +4190,20 @@ h1.qeel_title i {
 }
 
 /* Couleurs par groupe */
-.group-card.pragmatistes { border-color: #0074F0; }
-.group-card.pragmatistes .cp { color: #0074F0; }
+.group-card.pragmatistes { border-color: #9B9BAB; }
+.group-card.pragmatistes .cp { color: #9B9BAB; }
 
-.group-card.intacts { border-color: #EC6700; }
-.group-card.intacts .cp { color: #EC6700; }
+.group-card.intacts { border-color: #E9E7BE; }
+.group-card.intacts .cp { color: #E9E7BE; }
 
-.group-card.ambigus { border-color: #8607ED; }
-.group-card.ambigus .cp { color: #8607ED; }
+.group-card.ambigus { border-color: #BBA286; }
+.group-card.ambigus .cp { color: #BBA286; }
 
-.group-card.irreversibles { border-color: #E01145; }
-.group-card.irreversibles .cp { color: #E01145; }
+.group-card.irreversibles { border-color: #BFE5F8; }
+.group-card.irreversibles .cp { color: #BFE5F8; }
 
-.group-card.conscients { border-color: #75D959; }
-.group-card.conscients .cp { color: #75D959; }
+.group-card.conscients { border-color: #F0958F; }
+.group-card.conscients .cp { color: #F0958F; }
 
 /* Hover effects */
 .group-card:hover {
