@@ -4180,7 +4180,7 @@ h1.qeel_title i {
 }
 
 .group-card .group-name {
-  font-family: 'Matrix', var(--font-3);
+  font-family: 'Nebula', var(--font-3);
   text-transform: uppercase;
   font-size: var(--small-size);
   letter-spacing: 1px;
@@ -6293,7 +6293,7 @@ html.js .category .forums .fs-panel.is-active{
 /* Le “contenu réel” (que FA peut baliser en h2/a/etc.) */
 .cateFloatText,
 .cateFloatText *{
-  font-family:'Matrix', serif !important;
+  font-family:'Nebula', serif !important;
   font-size: clamp(34px, 4.5vw, 54px) !important;
   line-height: 1 !important;
   letter-spacing: 2px !important;
@@ -6389,7 +6389,7 @@ html.js .category .forums .fs-panel.is-active{
 }
 
 .profile-username {
-  font-family: 'Matrix', var(--font-3);
+  font-family: 'Nebula', var(--font-3);
   font-size: 42px;
   line-height: 1;
   margin: 0;
