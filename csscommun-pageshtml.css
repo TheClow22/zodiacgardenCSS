@@ -1,0 +1,372 @@
+/* ==========================================================
+   CSS COMMUN — PAGES HTML D'ANNEXES — ZODIAC GARDEN
+   BLOC 1 : POLICES D'ÉCRITURE + VARIABLES DE BASE
+   ==========================================================
+   Ce fichier NE CONTIENT AUCUNE COULEUR NI IMAGE D'AMBIANCE.
+   Chaque page d'annexe doit redéfinir --co-1, --co-2, --co-3
+   (et --textColor, --contrast, etc. si besoin) avec SES propres
+   couleurs, juste après avoir chargé ce fichier.
+
+   IMPORTANT : --font-2 et --font-3 NE sont PAS les mêmes polices
+   que sur le forum actuel (mf_wedding_bells / aesthetic), car ces
+   deux polices appartiennent à l'ancienne codeuse et ne sont pas
+   réutilisables. Remplacées ici par Nebula et Cormorant.
+   ========================================================== */
+
+/* ---------- IMPORT GOOGLE FONTS (doit rester tout en haut du fichier) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant:wght@400;500;600;700&family=Libre+Baskerville:ital@0;1&display=swap');
+
+/* ---------- POLICES CUSTOM (Aqua, Nebula, Glamour, Ballet) ---------- */
+
+@font-face {
+  font-family: 'Aqua';
+  src: url('https://file.garden/aEdE1_TgcQeU-vp-/Aqua') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nebula';
+  src: url('https://file.garden/aEdE1_TgcQeU-vp-/Nebula') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glamour';
+  src: url('https://file.garden/aEdE1_TgcQeU-vp-/Glamour') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ballet';
+  src: url('https://file.garden/aEdE1_TgcQeU-vp-/Ballet%5Bopsz%5D.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ---------- VARIABLES DE BASE (couleurs neutres + tailles + polices) ---------- */
+/* co-1, co-2, co-3 sont en gris par défaut : CHAQUE PAGE doit les redéfinir. */
+
+:root {
+  /* Couleurs de structure neutres (à redéfinir par page si besoin d'ambiance) */
+  --white: #ffffff;
+  --gray: #e9e9e9;
+  --lighter: #fafbfc4d;
+  --neutral: #fafbfc69;
+  --neutralDark: #fafbfccc;
+  --neutralDarker: #fefefe;
+
+  --contrast: #363636;
+  --contrastLight: #565656;
+  --contrastLighter: #e7e7e7;
+
+  /* Couleurs d'accent : GRIS PAR DÉFAUT — à redéfinir dans chaque page */
+  --co-1: #999999;
+  --co-2: #777777;
+  --co-3: #555555;
+
+  --co-gradient: linear-gradient(45deg, var(--co-3), var(--co-1), var(--co-3));
+
+  --textColor: #585858;
+  --textColorAccent: #000000;
+
+  --border: 1px solid var(--neutralDark);
+
+  /* Tailles de texte (identiques à celles du forum) */
+  --small-size: 10px;
+  --little-size: 12px;
+  --normal-size: 14px;
+  --medium-size: 16px;
+  --large-size: 20px;
+  --title-size: 24px;
+  --xl-size: 30px;
+  --xxl-size: 45px;
+
+  --radius: 20px;
+  --xs-radius: 3px;
+
+  /* Polices de base du forum (stables, ne changent pas avec le thème) */
+  --font: 'Inter', 'arial';
+  --font-2: 'Nebula';
+  --font-3: 'Cormorant';
+  --font-4: 'Libre Baskerville';
+  --font-ic: 'cappuccicons';
+}
+
+/* ==========================================================
+   BLOC 2 : BALISES DE STYLE DE TEXTE
+   ==========================================================
+   Mêmes noms de balises que sur le forum (css.txt). Couleurs
+   pilotées par --co-1 / --co-2 / --co-3 / --co-gradient,
+   définies dans le Bloc 1 (gris par défaut, à redéfinir
+   par chaque page d'annexe).
+   ========================================================== */
+
+/* ---------- COULEURS SIMPLES ---------- */
+c1, .c1 { color: var(--co-1); }
+c2, .c2 { color: var(--co-2); }
+c3, .c3 { background: var(--co-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 0px transparent; }
+c4 { color: var(--contrast); }
+
+/* ---------- GRAS STYLÉS ---------- */
+b { color: var(--co-2); }
+
+b1, b2, b3, b4 { font-weight: 600; color: var(--co-1); text-transform: uppercase; font-size: var(--little-size); letter-spacing: 1px; }
+b1::after, b2::after, b3::after, b4::after { content: '\0022B1'; margin-left: 5px; }
+b4 { color: var(--contrast); }
+
+bb1, bb2, bb3, bb4, bb5, bb6 { font-weight: 600; }
+bb4, bb5, bb6, bb7 { font-family: var(--font-3); }
+bb1, bb4 { color: var(--co-1); }
+bb2, bb5 { color: var(--co-2); }
+bb3, bb6 { background: var(--co-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 0px transparent; }
+bb7 { color: var(--contrast); }
+
+ba1, ba2, ba3, ba4 { font-family: var(--font-4); font-style: normal; }
+ba1 { color: var(--co-1); }
+ba2 { color: var(--co-2); }
+ba3 { background: var(--co-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 0px transparent; }
+ba4 { color: var(--contrast); }
+
+bu { font-family: var(--font-4); border-bottom: 2px double var(--co-1); text-transform: uppercase; font-size: var(--little-size); letter-spacing: -.5px; color: var(--contrast); }
+
+/* ---------- ITALIQUES STYLÉS ---------- */
+i, em { color: var(--co-1); }
+i2, i3, i4 { font-style: italic; color: var(--co-2); }
+i3 { background: var(--co-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 0px transparent; }
+i4 { color: var(--contrast); }
+i, i2, i3, i4 { font-family: var(--font-4); }
+
+/* ---------- SOULIGNÉS STYLÉS ---------- */
+u { border-bottom: 2px double var(--co-1); text-decoration: none !important; color: var(--contrast); letter-spacing: 1px; }
+u1, u2 { color: var(--contrast); }
+u1 { box-shadow: inset 0 -6px 0 var(--co-1); }
+u2 { box-shadow: inset 0 -6px 0 var(--co-2); }
+u3 {
+  background: linear-gradient(to right, var(--co-1), var(--co-2));
+  background-position: bottom;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  transition: all .5s;
+}
+u3:hover { background-size: 100% 100%; color: white; }
+
+/* ---------- BADGES FOND PLEIN ---------- */
+bg1, bg2, bg3, bg4 {
+  padding: 2px 5px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  color: white;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+bg1 { background: var(--co-1); }
+bg2 { background: var(--co-2); }
+bg3 { background: var(--co-gradient); }
+bg4 { background: var(--white); color: var(--contrast); }
+
+/* ---------- BADGES CONTOUR ---------- */
+bc1, bc2, bc3 {
+  border: 1px solid var(--co-1);
+  border-radius: var(--radius);
+  padding: 2px 5px;
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--contrast);
+}
+bc2 { border: 1px solid var(--co-2); }
+bc3 { position: relative; border: none; }
+bc3::before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  margin: -1px;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: var(--co-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ---------- MINI-BADGES TEXTE ---------- */
+min1, min2, min3, min4 {
+  display: inline-block;
+  line-height: 12px;
+  padding: 0px 4px 0 2px;
+  text-shadow: 1px 1px 0 var(--base-1, rgba(0,0,0,.2));
+  font-style: italic;
+  color: var(--white);
+  font-size: var(--little-size);
+  text-transform: lowercase;
+}
+min1 { background: var(--co-1); }
+min2 { background: var(--co-2); }
+min3 { background: var(--co-gradient); }
+min4 { background: var(--white); color: var(--contrast); }
+
+/* ---------- DIVERS ---------- */
+sp { transition: all .5s; background: var(--contrastLighter); color: transparent; border-radius: 5px; }
+sp:hover { background: none; color: var(--textColor); }
+
+strike { text-decoration-color: var(--co-1); }
+ls { font-family: courier new; letter-spacing: 4px; }
+ft { font-size: var(--small-size); font-style: italic; }
+tx { display: inline-block; color: var(--textColor); font-size: var(--normal-size) !important; font-family: var(--font); text-transform: none; }
+little-tx { display: inline-block; color: var(--textColor); font-size: var(--little-size) !important; font-family: var(--font); text-transform: none; }
+lett {
+  font-size: var(--xl-size);
+  line-height: 115%;
+  font-family: var(--font-3);
+  color: var(--contrast);
+  float: left;
+  margin: 5px 25px 5px 0;
+  border-bottom: 2px dotted var(--co-2);
+}
+time {
+  background: var(--neutral);
+  border-radius: var(--radius);
+  padding: 2px 5px;
+  color: var(--contrast);
+  font-size: var(--small-size);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================
+   BLOC 3 : TITRES & ENCADRÉ CITATION
+   ==========================================================
+   t1 à t4, sub1/sub-2/sub-3 = repris tels quels du forum.
+   .note-encadree = nouvel élément généré pour les annexes,
+   inspiré du style "encart info" (ex: page Fléaux).
+   ========================================================== */
+
+/* ---------- TITRES ---------- */
+t1 {
+  display: block;
+  font-family: var(--font-2);
+  font-size: var(--xl-size);
+  line-height: var(--xl-size);
+  color: var(--white);
+}
+
+t2, t2b, .t2b, t3 {
+  display: block;
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: var(--title-size);
+  line-height: 130%;
+  color: var(--white);
+}
+t2b, .t2b { font-size: var(--little-size); }
+
+t3::before {
+  content: '\eca1';
+  font-family: 'cappuccicons';
+  margin-right: 10px;
+}
+t3 {
+  font-size: var(--medium-size);
+  color: var(--co-2);
+  letter-spacing: 1px;
+  background-color: var(--neutralDarker);
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+t4 {
+  display: block;
+  font-size: var(--medium-size);
+  letter-spacing: 1px;
+  color: var(--contrast);
+  font-family: var(--font-3);
+  border-bottom: 1px solid var(--co-1);
+  margin-bottom: 5px;
+  padding: 2px;
+}
+t4::before {
+  content: '\eca1';
+  font-family: var(--font-ic);
+  margin-right: 10px;
+  font-size: 13px;
+  color: var(--co-1);
+}
+
+/* ---------- SOUS-TITRES ---------- */
+sub1 {
+  font-size: var(--small-size);
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  color: var(--contrast);
+}
+
+sub-2 {
+  margin-bottom: -10px;
+  padding-bottom: 5px;
+  color: var(--co-2);
+  text-shadow: 0 0 3px;
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: var(--large-size);
+  line-height: 112%;
+  border-bottom: 1px solid var(--co-2);
+}
+sub-2::before {
+  font-family: arial;
+  color: var(--co-1);
+  text-shadow: 0 0 3px var(--co-1);
+  content: "\00002E\0030FB\003002\00272D\0030FB\00002E";
+  margin-right: 10px;
+}
+
+sub-3 {
+  display: block;
+  margin: 5px 0 -10px;
+  text-align: center;
+  color: var(--co-1);
+  text-shadow: 0 0 3px;
+  font-weight: 600;
+  font-size: var(--small-size);
+  text-transform: uppercase;
+}
+
+/* ---------- ENCADRÉ CITATION / NOTE (nouveau, générique) ---------- */
+.note-encadree {
+  position: relative;
+  background: var(--neutralDark);
+  border-left: 3px solid var(--co-1);
+  border-radius: var(--xs-radius) var(--radius) var(--radius) var(--xs-radius);
+  padding: 18px 22px 18px 26px;
+  margin: 20px 0;
+  font-size: var(--normal-size);
+  line-height: 1.6;
+  color: var(--textColorAccent);
+}
+
+.note-encadree-icone {
+  position: absolute;
+  top: -12px;
+  left: -14px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--co-gradient);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
