@@ -6347,12 +6347,17 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   margin: 0 0 28px;
 }
 
+/* Le bloc-titre lui-même reste neutre : pas de font-family Nebula
+   ni de couleur ici, sinon ça écrase aussi la police/couleur de
+   l'icône cappuccicon à l'intérieur (qui a besoin de sa propre
+   police pour s'afficher, et qui doit rester teintée co-1, pas en
+   dégradé). Le dégradé Nebula s'applique seulement au texte, via
+   .texte-titre (voir HTML : entourer le texte du titre par
+   <span class="texte-titre">...</span>). */
 .fiche-bloc-titre {
-  font-family: 'Nebula';
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 30px;
-  color: var(--co1);
   margin: 0 0 16px;
   display: flex;
   align-items: center;
@@ -6360,6 +6365,14 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 .fiche-bloc-titre .cp {
   font-size: 17px;
+  color: var(--co-1);
+}
+.fiche-bloc-titre .texte-titre {
+  font-family: 'Nebula';
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .fiche-pouvoirs-cote-a-cote {
