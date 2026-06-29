@@ -958,6 +958,124 @@ div#tabs li:nth-child(5) {
 	text-transform: uppercase;
 }
 
+/*** ------------------------------- ***/
+/*** QUI EST EN LIGNE -------------- ***/
+
+/* Titre bandeau */
+h1.qeel_title {
+  position: relative;
+  height: 55px;
+  padding-top: 11px;
+  background: var(--co-gradient);
+  background-size: 200% 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--neutralDark);
+  border-radius: var(--radius) var(--radius) 0 0;
+  color: white;
+  animation: gradient 6s ease infinite;
+}
+
+h1.qeel_title > div {
+  line-height: 17px;
+}
+
+h1.qeel_title i {
+  font-family: var(--font-2);
+  font-style: normal;
+  text-transform: none;
+  font-size: var(--xl-size);
+  line-height: var(--xl-size);
+  font-weight: 600;
+}
+
+/* Container principal */
+.qeel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+  background: var(--neutral);
+  backdrop-filter: blur(5px);
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 20px;
+}
+
+/* ============================================ */
+/* GROUPES EN LIGNE HORIZONTALE */
+/* ============================================ */
+
+.qeel-groups-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.group-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--neutralDark);
+  border-radius: var(--radius);
+  padding: 15px 10px;
+  height: 85px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+
+.group-card .cp {
+  font-size: 26px;
+  transition: transform 0.3s ease;
+}
+
+.group-card .group-name {
+  font-family: var(--font-2);
+  font-size: 25px;
+  letter-spacing: 1px;
+  color: var(--textColorAccent);
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Couleurs par groupe */
+.group-card.pragmatistes { border-color: #9B9BAB; }
+.group-card.pragmatistes .cp { color: #9B9BAB; }
+
+.group-card.intacts { border-color: #E9E7BE; }
+.group-card.intacts .cp { color: #E9E7BE; }
+
+.group-card.ambigus { border-color: #BBA286; }
+.group-card.ambigus .cp { color: #BBA286; }
+
+.group-card.irreversibles { border-color: #BFE5F8; }
+.group-card.irreversibles .cp { color: #BFE5F8; }
+
+.group-card.conscients { border-color: #F0958F; }
+.group-card.conscients .cp { color: #F0958F; }
+
+/* Hover effects */
+.group-card:hover {
+  background: var(--co-gradient);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.group-card:hover .cp {
+  color: white;
+  transform: scale(1.15);
+}
+
+.group-card:hover .group-name {
+  color: white;
+}
+
 /* ============================================ */
 /* BLOC BIENVENUE (avatar | texte | GIF) */
 /* ============================================ */
@@ -1118,7 +1236,7 @@ div#tabs li:nth-child(5) {
   height: 38px;
   background: var(--co-gradient);
   color: white;
-  font-family: 'Retro Gaming', var(--font-3);
+  font-family: var(--font-3);
   text-transform: uppercase;
   font-size: var(--small-size);
   font-weight: 600;
