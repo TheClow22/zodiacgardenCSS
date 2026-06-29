@@ -6525,3 +6525,20 @@ a.fsb-btn:hover{color:var(--co-3)!important}
     height: 44px;
   }
 }
+
+/* ===================================================================
+   DIAGNOSTIC TEMPORAIRE — à coller À LA TOUTE FIN de ton CSS externe
+   (donc après TOUT le reste, pour être sûr qu'il n'y a rien après lui
+   qui pourrait le re-écraser). Ça va nous dire où est le problème.
+   À retirer une fois le diagnostic fait.
+   =================================================================== */
+
+/* TEST : le sélecteur .texte-titre est-il bien atteint ?
+   Si ce test fonctionne (texte "POUVOIRS" et "TRAITS PHYSIQUES" tout
+   en ROUGE vif), le sélecteur est bon, donc le souci vient
+   spécifiquement du dégradé/background-clip. Si le texte ne devient
+   PAS rouge, c'est qu'une autre règle, plus forte, l'emporte encore
+   sur la couleur — il faudra alors regarder ce qui reste en gris/blanc. */
+.fiche-bloc-titre .texte-titre {
+  color: red !important;
+}
