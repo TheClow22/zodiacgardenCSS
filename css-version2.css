@@ -5828,19 +5828,22 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   color: var(--textColor);
 }
 
+/* ---------- CONTOUR FIXE ARGENT/OR ----------
+   Indépendant de --co-1/--co-2 : reste toujours dans ces tons,
+   même si les couleurs du forum changent. Fait écho au soleil/lune. */
 .fiche-zg::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 24px;
   padding: 1px;
-  background: var(--fiche-gradient3);
+  background: linear-gradient(135deg, #e8e3d8, #d4af37, #e8e3d8);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
   z-index: 5;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 /* ---------- MÉDAILLONS SOLEIL/LUNE (validés, inchangés) ---------- */
@@ -5968,11 +5971,12 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 .fiche-etincelle {
   position: absolute;
-  color: var(--co-2);
   font-size: 14px;
   z-index: 2;
   animation: fiche-etincelle-flotte 3s ease-in-out infinite;
 }
+.fiche-etincelle.co1 { color: var(--co-1); }
+.fiche-etincelle.co2 { color: var(--co-2); }
 @keyframes fiche-etincelle-flotte {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
   50% { transform: translateY(-6px) scale(1.2); opacity: 1; }
@@ -5987,25 +5991,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
-
-/* ---------- NUANCIER VERTICAL ----------
-   3-4 pastilles de couleur empilées, pour ajouter du relief coloré.
-   Par défaut : 2 pastilles co-1/co-2 + 2 nuances intermédiaires via
-   le dégradé, mais on peut mettre des couleurs custom du personnage
-   directement en HTML si besoin (voir balise style="background:..."). */
-.fiche-nuancier {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px;
-  background: var(--neutral);
-  border-radius: 14px;
-  border: 1px solid var(--co-2);
-}
-.fiche-nuancier-pastille {
-  height: 22px;
-  border-radius: 6px;
 }
 
 .fiche-carte {
@@ -6087,68 +6072,98 @@ a.fsb-btn:hover{color:var(--co-3)!important}
    =================================================================== */
 
 /* ===================================================================
-   IDENTITÉ ASYMÉTRIQUE
-   ===================================================================
-   Au lieu d'un nom centré classique : le nom est aligné à gauche,
-   la citation décalée vers la droite avec un léger retrait vertical,
-   et 2 petites icônes décoratives flottent de part et d'autre pour
-   casser la symétrie. Inspiré de la référence "Juliet Lovecraft". */
+   NOM/PRÉNOM ASYMÉTRIQUE — dans la colonne droite, à côté du portrait
+   =================================================================== */
 
-.fiche-identite {
+.fiche-nom-zone {
   position: relative;
-  padding: 10px 20px 20px 8px;
-  margin: 10px 0 30px;
+  padding: 6px 4px;
 }
-
 .fiche-nom {
   font-family: 'Nebula';
   text-transform: uppercase;
-  font-size: 50px;
-  line-height: 1;
+  font-size: 34px;
+  line-height: 1.05;
   background: var(--fiche-gradient3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-align: left;
 }
-
-.fiche-citation {
-  display: block;
-  max-width: 70%;
-  margin: 14px 0 0 auto; /* poussée à droite, sous le nom à gauche : asymétrie */
-  text-align: right;
-  font-family: var(--font-4);
-  font-style: italic;
-  font-size: var(--normal-size);
-  color: var(--textColorAccent);
-  position: relative;
-  padding-right: 4px;
-}
-
-/* Icônes décoratives flottantes, posées en diagonale par rapport
-   au bloc nom/citation, comme les petites images sur la référence */
 .fiche-icone-deco {
   position: absolute;
-  font-size: 20px;
-  color: var(--co-1);
-  opacity: 0.7;
+  font-size: 18px;
+  opacity: 0.75;
   animation: fiche-icone-deco-flotte 3.5s ease-in-out infinite;
 }
 .fiche-icone-deco.un {
-  top: -6px;
-  right: 30%;
+  top: -10px;
+  right: 6px;
+  color: var(--co-1);
 }
 .fiche-icone-deco.deux {
-  bottom: -4px;
-  left: 0;
+  bottom: -8px;
+  left: 30%;
   color: var(--co-2);
   animation-delay: 1.2s;
 }
 @keyframes fiche-icone-deco-flotte {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-5px) rotate(8deg); }
+}
+
+/* ===================================================================
+   CITATION — pleine largeur, sous l'en-tête
+   =================================================================== */
+
+.fiche-citation {
+  display: block;
+  max-width: 80%;
+  margin: 8px auto 0;
+  text-align: center;
+  font-family: var(--font-4);
+  font-style: italic;
+  font-size: var(--normal-size);
+  color: var(--textColorAccent);
+}
+
+/* ===================================================================
+   MÉDAILLONS PINTEREST — façon "cycles de la lune" :
+   1 grand au centre (contour co-2) + 2 petits sur les côtés (contour
+   co-1), légèrement décalés en hauteur pour casser l'alignement strict
+   =================================================================== */
+
+.fiche-medaillons-perso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 24px 0 28px;
+}
+.fiche-medaillon-perso {
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fiche-medaillon-perso img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.fiche-medaillon-perso.grand {
+  width: 90px;
+  height: 90px;
+  border: 2px solid var(--co-2);
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+}
+.fiche-medaillon-perso.petit {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--co-1);
+  margin-top: 14px; /* léger décalage vertical, comme la référence */
 }
 
 /* ===================================================================
