@@ -5799,27 +5799,30 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ===================================================================
-   FICHE DE PRÉSENTATION — ZODIAC GARDEN — VERSION 2
+   FICHE DE PRÉSENTATION — ZODIAC GARDEN — VERSION 3
    ===================================================================
-   Refonte complète : plus grande échelle, cadres variés, badge en
-   overlay sur le portrait, bandeau vertical, vrai effet magique.
-   2 couleurs d'accent (--co-1 / --co-2) + dégradé simulé --co-3.
+   Changements majeurs vs v2 :
+   - Portrait en forme d'ARCHE (haut carré, base arrondie) + glow flou
+     dégradé derrière, façon carte de tarot
+   - Soleil/lune dans des MÉDAILLONS RONDS fixes aux 4 coins de la
+     fiche : ils ne peuvent plus déborder ni se mal positionner
+   - Suppression du bandeau vertical "Élément Feu" et du bloc
+     "Le savais-tu ?" (non demandés)
+   - Blason + pouvoir élémentaire réunis dans UNE carte (comme la
+     carte signe astro), séparée de la carte pouvoir zodiacal
+   - Jauges de pouvoir en ARC DE CERCLE avec pourcentage affiché
    =================================================================== */
 
 :root {
   --fiche-gradient3: linear-gradient(135deg, var(--co-1), var(--co-2), var(--co-1));
 }
 
-/* ---------- CONTENEUR GÉNÉRAL ----------
-   isolation:isolate crée un nouveau contexte d'empilement propre,
-   ça évite que le positionnement absolu de l'intérieur soit perturbé
-   par des règles du forum sur les parents. */
 .fiche-zg {
   position: relative;
   isolation: isolate;
-  max-width: 800px;
+  max-width: 820px;
   margin: 20px auto;
-  padding: 36px;
+  padding: 40px;
   border-radius: 28px;
   background: var(--neutralDark);
   overflow: hidden;
@@ -5846,29 +5849,43 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   50% { opacity: 1; }
 }
 
-/* ---------- SOLEIL & LUNE EN FILIGRANE ----------
-   Taille volontairement contenue (160px), ancrés fermement aux coins
-   du conteneur .fiche-zg lui-même (qui a isolation:isolate, donc le
-   absolute se cale forcément sur lui, pas sur un parent du forum). */
-.fiche-soleil,
-.fiche-lune {
+/* ---------- MÉDAILLONS SOLEIL/LUNE AUX 4 COINS ----------
+   Chacun a sa propre zone FIXE en position absolue dans un coin de
+   la fiche : l'image ne peut jamais déborder ni "sauter" ailleurs,
+   puisqu'elle est contrainte dans un cercle de taille fixe avec
+   overflow:hidden. Pour remplir : juste changer l'URL background. */
+.fiche-medaillon {
   position: absolute;
-  width: 160px;
-  height: 160px;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.4;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 4;
+  background: var(--neutralDarker);
+  box-shadow: 0 0 18px rgba(0,0,0,0.4);
 }
-.fiche-soleil {
-  bottom: 10px;
-  left: 10px;
-  background: url('https://images2.imgbox.com/a2/a6/qnRSuMet_o.png') center/contain no-repeat;
+.fiche-medaillon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--co-1);
+  box-shadow: 0 0 14px var(--co-1) inset;
+  animation: fiche-medaillon-glow 3s ease-in-out infinite;
 }
-.fiche-lune {
-  top: 10px;
-  right: 10px;
-  background: url('https://images2.imgbox.com/d9/3e/No4BbMGC_o.png') center/contain no-repeat;
+@keyframes fiche-medaillon-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
+.fiche-medaillon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fiche-medaillon.tl { top: 16px; left: 16px; }
+.fiche-medaillon.tr { top: 16px; right: 16px; }
+.fiche-medaillon.bl { bottom: 16px; left: 16px; }
+.fiche-medaillon.br { bottom: 16px; right: 16px; }
 
 /* ---------- CIEL ÉTOILÉ SCINTILLANT ---------- */
 .fiche-ciel {
@@ -5894,47 +5911,49 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ===================================================================
-   EN-TÊTE : bandeau vertical | portrait (avec blason en overlay) | infos
+   EN-TÊTE : portrait en arche avec glow | colonnes infos
    =================================================================== */
 
 .fiche-header {
   display: grid;
-  grid-template-columns: 56px 1fr 200px;
-  gap: 22px;
-  align-items: stretch;
-  margin-bottom: 26px;
+  grid-template-columns: 1fr 280px;
+  gap: 30px;
+  align-items: start;
+  margin: 50px 0 30px;
 }
 
-/* ---------- BANDEAU VERTICAL (texte tourné, façon "TRUST IN ATHENA") ----------
-   Affiche le nom de l'élément en vertical, du bas vers le haut. */
-.fiche-bandeau-vertical {
+/* ---------- PORTRAIT EN ARCHE + GLOW ----------
+   border-radius asymétrique : coins du haut presque droits, base
+   très arrondie → silhouette d'arche/blason, comme tes références. */
+.fiche-portrait-zone {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: var(--neutral);
-  border-radius: 14px;
-  border-left: 3px solid var(--co-1);
-  padding: 16px 0;
 }
-.fiche-bandeau-vertical span {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-family: var(--font-3);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 13px;
-  color: var(--co-1);
-  white-space: nowrap;
+.fiche-portrait-glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 20% 20% 50% 50% / 10% 10% 40% 40%;
+  background: var(--fiche-gradient3);
+  filter: blur(35px);
+  opacity: 0.55;
+  z-index: 0;
+  animation: fiche-glow-respire 4s ease-in-out infinite;
 }
-
-/* ---------- PORTRAIT PRINCIPAL ---------- */
+@keyframes fiche-glow-respire {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.04); }
+}
 .fiche-portrait {
   position: relative;
-  border-radius: 8px 36px 8px 36px;
+  z-index: 1;
+  width: 320px;
+  max-width: 100%;
+  height: 420px;
+  border-radius: 16px 16px 160px 160px;
   overflow: hidden;
-  min-height: 480px;
-  background: var(--neutralDarker);
   border: 2px solid var(--co-1);
+  background: var(--neutralDarker);
 }
 .fiche-portrait img {
   width: 100%;
@@ -5943,42 +5962,72 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: block;
 }
 
-/* ---------- BLASON EN OVERLAY (chevauche le coin du portrait) ----------
-   Comme "AXIS" sur la fiche de référence : posé par-dessus le bord
-   de l'image, pas dans une colonne séparée. Taille généreuse (130px)
-   pour qu'on distingue les détails du blason. */
-.fiche-blason-overlay {
+/* Petits diamants gardiens, posés à mi-hauteur de chaque côté du
+   portrait, comme sur la référence "SITE NAME" */
+.fiche-gardien {
   position: absolute;
-  bottom: -20px;
-  left: -20px;
-  width: 130px;
-  z-index: 3;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+  top: 50%;
+  font-size: 16px;
+  color: var(--co-2);
+  z-index: 2;
+  animation: fiche-gardien-flotte 3s ease-in-out infinite;
 }
-.fiche-blason-overlay img {
-  width: 100%;
-  height: auto;
-  display: block;
+.fiche-gardien.gauche { left: -8px; transform: translateY(-50%); }
+.fiche-gardien.droite { right: -8px; transform: translateY(-50%); }
+@keyframes fiche-gardien-flotte {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-56%) scale(1.15); }
 }
 
-/* ---------- COLONNE INFOS DROITE : signe + classe stellaire + pêle-mêle ---------- */
+/* ---------- COLONNE INFOS DROITE ---------- */
 .fiche-col-droite {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
+}
+/* ===================================================================
+   FICHE DE PRÉSENTATION — ZODIAC GARDEN — VERSION 3 (suite)
+   Cartes de la colonne droite : signe astro+classe stellaire,
+   blason+pouvoir élémentaire (même format que la carte signe astro,
+   comme demandé), et pêle-mêle.
+   À coller après la partie 1.
+   =================================================================== */
+
+/* ---------- GABARIT COMMUN DE CARTE (réutilisé pour signe astro
+   ET blason élémentaire, pour qu'elles soient bien harmonisées) ---------- */
+.fiche-carte {
+  background: var(--neutral);
+  border-radius: 18px;
+  border: 1px solid var(--co-2);
+  padding: 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* Léger glow d'ambiance qui traverse la carte */
+.fiche-carte::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle, var(--co-1) 0%, transparent 60%);
+  opacity: 0.12;
+  z-index: 0;
+  animation: fiche-carte-respire 5s ease-in-out infinite;
+}
+@keyframes fiche-carte-respire {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.fiche-carte > * {
+  position: relative;
+  z-index: 1;
 }
 
-.fiche-carte-signe {
-  background: var(--neutral);
-  border-radius: 16px;
-  border: 1px solid var(--co-2);
-  padding: 16px;
-  text-align: center;
-}
+/* ---------- CARTE SIGNE ASTRO + CLASSE STELLAIRE ---------- */
 .fiche-signe {
   width: 64px;
   height: 64px;
-  margin: 0 auto 8px;
+  margin: 0 auto 10px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -5993,18 +6042,14 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   0%, 100% { box-shadow: 0 0 12px rgba(0,0,0,0.3); }
   50% { box-shadow: 0 0 22px rgba(0,0,0,0.5); }
 }
-
-.fiche-classe-stellaire {
-  margin-top: 4px;
-}
-.fiche-classe-stellaire .label {
+.fiche-carte .label {
   font-family: var(--font-3);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 10px;
   color: var(--textColorAccent);
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .fiche-etoiles {
   display: flex;
@@ -6025,34 +6070,92 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   50% { opacity: 0.5; }
 }
 
-/* Carte pêle-mêle compacte qui complète la colonne droite, pour
-   qu'il n'y ait plus de vide sous le signe astro */
+/* ---------- CARTE BLASON + POUVOIR ÉLÉMENTAIRE (même gabarit .fiche-carte) ---------- */
+.fiche-carte .blason {
+  width: 70px;
+  height: auto;
+  margin: 0 auto 8px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+}
+.fiche-carte .nom-pouvoir {
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  color: var(--co-1);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+/* ---------- JAUGE EN ARC DE CERCLE AVEC POURCENTAGE ----------
+   SVG inline : le cercle de fond est gris, le cercle "progrès" se
+   dessine avec stroke-dasharray calculé selon le %. Le pourcentage
+   est affiché en texte au centre. Pour changer la valeur : éditer
+   le stroke-dasharray ET le chiffre affiché (voir HTML). */
+.fiche-arc {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+}
+.fiche-arc svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.fiche-arc .fond {
+  fill: none;
+  stroke: var(--neutralDarker);
+  stroke-width: 8;
+}
+.fiche-arc .progres {
+  fill: none;
+  stroke: var(--co-1);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+  filter: drop-shadow(0 0 4px var(--co-1));
+}
+.fiche-arc .valeur {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--textColorAccent);
+}
+.fiche-arc-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--textColorAccent);
+  text-align: center;
+  margin-top: 4px;
+}
+.fiche-arcs-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* ---------- CARTE PÊLE-MÊLE (même gabarit, plus haute pour combler) ---------- */
 .fiche-carte-pele-mele {
   flex: 1;
-  background: var(--neutral);
-  border-radius: 16px;
-  border: 1px solid var(--co-1);
-  padding: 14px;
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-.fiche-carte-pele-mele .titre {
-  font-family: var(--font-3);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 10px;
-  color: var(--co-1);
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  padding-bottom: 6px;
-  margin: 0;
 }
 .fiche-pele-item {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 11px;
+  position: relative;
+  z-index: 1;
 }
 .fiche-pele-item .cp {
   width: 26px;
@@ -6067,24 +6170,20 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   font-size: 13px;
 }
 /* ===================================================================
-   FICHE DE PRÉSENTATION — ZODIAC GARDEN — VERSION 2 (suite)
-   Nom/citation, playlist, et grille de blocs avec cadres VARIÉS.
-   À coller après la partie 1.
-   =================================================================== */
-
-/* ===================================================================
-   NOM (police Nebula comme demandé) + CITATION
+   FICHE DE PRÉSENTATION — ZODIAC GARDEN — VERSION 3 (suite 2)
+   Identité (nom Nebula), playlist, blocs de la grille du bas.
+   À coller après la partie 2.
    =================================================================== */
 
 .fiche-identite {
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 26px;
 }
 
 .fiche-nom {
   font-family: 'Nebula';
-  text-transform: uppercase; /* Nebula n'est lisible qu'en majuscules */
-  font-size: 58px;
+  text-transform: uppercase;
+  font-size: 60px;
   line-height: 1;
   background: var(--fiche-gradient3);
   -webkit-background-clip: text;
@@ -6121,7 +6220,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ===================================================================
-   PLAYLIST — bandeau horizontal façon carnet, sous l'en-tête
+   PLAYLIST
    =================================================================== */
 
 .fiche-playlist {
@@ -6184,7 +6283,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   border-bottom-color: var(--co-1);
 }
 
-/* ---------- SÉPARATEUR DÉCORATIF ---------- */
 .fiche-separateur {
   display: flex;
   align-items: center;
@@ -6206,7 +6304,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ===================================================================
-   GRILLE DE BLOCS — cadres VARIÉS (pas tous identiques)
+   GRILLE DE BLOCS DU BAS
    =================================================================== */
 
 .fiche-grille {
@@ -6214,8 +6312,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   grid-template-columns: 1fr 1fr;
   gap: 22px;
 }
-
-/* Style "carte arrondie standard" — utilisé pour pouvoirs / traits */
 .fiche-bloc {
   position: relative;
   background: var(--neutral);
@@ -6226,10 +6322,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-bloc.pleine-largeur {
   grid-column: 1 / -1;
 }
-
-/* Style "carte sombre à coins nets" — utilisé pour inventaire,
-   volontairement différent du style ci-dessus pour casser la
-   répétition visuelle */
 .fiche-bloc-alt {
   position: relative;
   background: var(--neutralDarker);
@@ -6240,7 +6332,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-bloc-alt.pleine-largeur {
   grid-column: 1 / -1;
 }
-
 .fiche-bloc-titre {
   font-family: var(--font-3);
   text-transform: uppercase;
@@ -6262,60 +6353,29 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   color: var(--textColor);
 }
 
-/* ===================================================================
-   BLOC POUVOIRS
-   =================================================================== */
-
-.fiche-pouvoir-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+/* ---------- POUVOIR ZODIACAL (bloc séparé, pleine largeur, avec
+   description + ses propres arcs %) ---------- */
+.fiche-pouvoir-zodiacal-corps {
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
-.fiche-pouvoir-sous-titre {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--co-2);
-  margin-bottom: 8px;
-  display: block;
+.fiche-pouvoir-zodiacal-texte {
+  flex: 1;
+}
+.fiche-pouvoir-zodiacal-texte .nom {
+  font-size: 14px;
   font-weight: 600;
-}
-.fiche-pouvoir-desc {
-  font-size: 12px;
-  font-style: italic;
-  margin: 0 0 8px;
-  opacity: 0.85;
-}
-.fiche-barre-ligne {
-  margin-bottom: 8px;
-}
-.fiche-barre-ligne:last-child {
-  margin-bottom: 0;
-}
-.fiche-barre-label {
-  font-size: 10px;
+  color: var(--co-2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--textColorAccent);
-  margin-bottom: 3px;
-  display: block;
+  margin: 0 0 6px;
 }
-.fiche-barre-fond {
-  height: 7px;
-  border-radius: 4px;
-  background: var(--neutralDarker);
-  overflow: hidden;
-}
-.fiche-barre-remplie {
-  height: 100%;
-  border-radius: 4px;
-  background: var(--fiche-gradient3);
+.fiche-pouvoir-zodiacal-texte p {
+  font-style: italic;
 }
 
-/* ===================================================================
-   BLOC TRAITS PHYSIQUES
-   =================================================================== */
-
+/* ---------- TRAITS PHYSIQUES ---------- */
 .fiche-trait-grille {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -6334,10 +6394,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   margin-bottom: 2px;
 }
 
-/* ===================================================================
-   BLOC INVENTAIRE (style alt)
-   =================================================================== */
-
+/* ---------- INVENTAIRE ---------- */
 .fiche-inventaire {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -6362,26 +6419,20 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 /* ===================================================================
    RESPONSIVE
    =================================================================== */
-@media (max-width: 700px) {
+@media (max-width: 760px) {
   .fiche-header {
     grid-template-columns: 1fr;
   }
-  .fiche-bandeau-vertical {
-    writing-mode: initial;
-    padding: 10px;
-  }
-  .fiche-bandeau-vertical span {
-    writing-mode: initial;
-    transform: none;
-  }
   .fiche-grille,
-  .fiche-pouvoir-row,
   .fiche-trait-grille,
   .fiche-inventaire {
     grid-template-columns: 1fr;
   }
-  .fiche-playlist {
+  .fiche-pouvoir-zodiacal-corps {
     flex-direction: column;
-    align-items: flex-start;
+  }
+  .fiche-medaillon {
+    width: 56px;
+    height: 56px;
   }
 }
