@@ -5837,24 +5837,23 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   inset: 0;
   border-radius: 24px;
   padding: 1.5px;
-  background: linear-gradient(135deg, #f4f1ea 0%, #d4af37 25%, #f4f1ea 50%, #d4af37 75%, #f4f1ea 100%);
+  background: linear-gradient(135deg, #aab4c4 0%, #e2c989 25%, #aab4c4 50%, #e2c989 75%, #aab4c4 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
   z-index: 5;
-  opacity: 0.8;
+  opacity: 0.75;
 }
-/* Glow doux autour du contour, pour que l'argent ressorte aussi
-   bien que le doré (sinon le doré écrase visuellement l'argent) */
+/* Glow doux autour du contour : bleu acier + or pastel, équilibrés */
 .fiche-zg::after {
   content: '';
   position: absolute;
   inset: -3px;
   border-radius: 26px;
   box-shadow:
-    0 0 14px rgba(244, 241, 234, 0.35),
-    0 0 22px rgba(212, 175, 55, 0.25);
+    0 0 14px rgba(170, 180, 196, 0.4),
+    0 0 20px rgba(226, 201, 137, 0.3);
   pointer-events: none;
   z-index: 4;
 }
@@ -5875,8 +5874,8 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px solid #e8c75f;
-  box-shadow: 0 0 12px rgba(232, 199, 95, 0.6) inset, 0 0 10px rgba(244, 241, 234, 0.4);
+  border: 2px solid #d9c08a;
+  box-shadow: 0 0 10px rgba(217, 192, 138, 0.5) inset, 0 0 10px rgba(170, 180, 196, 0.45);
 }
 .fiche-medaillon img {
   width: 100%;
@@ -6088,16 +6087,30 @@ a.fsb-btn:hover{color:var(--co-3)!important}
    NOM/PRÉNOM ASYMÉTRIQUE — dans la colonne droite, à côté du portrait
    =================================================================== */
 
-.fiche-nom-zone {
-  position: relative;
-  padding: 10px 4px 4px;
-  min-height: 90px;
+/* ===================================================================
+   IDENTITÉ EN DAMIER — façon Juliet/Lovecraft :
+   Ligne 1 : Prénom (gauche) | Citation (droite)
+   Ligne 2 : 3 médaillons (gauche) | Nom (droite)
+   La citation occupe l'espace entre les deux, ce qui crée l'aération
+   et le décalage naturellement, sans besoin d'icônes qui suivent mal
+   le texte.
+   =================================================================== */
+
+.fiche-identite-damier {
+  margin: 36px 0 0;
 }
-/* Prénom : en haut, aligné à gauche */
+
+.fiche-ligne-prenom {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 18px;
+}
 .fiche-prenom {
   font-family: 'Nebula';
   text-transform: uppercase;
-  font-size: 32px;
+  font-size: 46px;
   line-height: 1;
   background: var(--fiche-gradient3);
   -webkit-background-clip: text;
@@ -6105,79 +6118,26 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   background-clip: text;
   margin: 0;
   letter-spacing: 1px;
-  text-align: left;
+  white-space: nowrap;
 }
-/* Nom : décalé plus bas ET plus à droite, comme Juliet/Lovecraft */
-.fiche-nomfamille {
-  font-family: 'Nebula';
-  text-transform: uppercase;
-  font-size: 26px;
-  line-height: 1;
-  background: var(--fiche-gradient3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 6px 0 0 38%;
-  letter-spacing: 1px;
-  text-align: left;
-}
-.fiche-icone-deco {
-  position: absolute;
-  font-size: 18px;
-  opacity: 0.75;
-  animation: fiche-icone-deco-flotte 3.5s ease-in-out infinite;
-}
-.fiche-icone-deco.un {
-  top: -10px;
-  right: 6px;
-  color: var(--co-1);
-}
-.fiche-icone-deco.deux {
-  bottom: -8px;
-  left: 30%;
-  color: var(--co-2);
-  animation-delay: 1.2s;
-}
-@keyframes fiche-icone-deco-flotte {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(8deg); }
-}
-
-/* ===================================================================
-   CITATION — vrai habillage, plus un texte qui flotte seul.
-   Bandeau translucide avec liseré et glow doux + grands guillemets
-   décoratifs derrière, façon ornement de manuscrit.
-   =================================================================== */
 
 .fiche-citation-zone {
   position: relative;
-  max-width: 86%;
-  margin: 8px auto 0;
-  padding: 18px 36px;
-  text-align: center;
+  padding: 14px 26px;
+  text-align: left;
   background: var(--neutral);
-  border-radius: 4px 30px 4px 30px;
+  border-radius: 4px 24px 4px 24px;
   border: 1px solid var(--co-1);
+  align-self: center;
 }
 .fiche-citation-zone::before {
   content: '❝';
   position: absolute;
-  top: -8px;
-  left: 12px;
-  font-size: 36px;
+  top: -10px;
+  left: 10px;
+  font-size: 30px;
   font-family: Georgia, serif;
   color: var(--co-1);
-  opacity: 0.5;
-  line-height: 1;
-}
-.fiche-citation-zone::after {
-  content: '❞';
-  position: absolute;
-  bottom: -22px;
-  right: 12px;
-  font-size: 36px;
-  font-family: Georgia, serif;
-  color: var(--co-2);
   opacity: 0.5;
   line-height: 1;
 }
@@ -6186,27 +6146,50 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   margin: 0;
   font-family: var(--font-4);
   font-style: italic;
-  font-size: var(--normal-size);
+  font-size: 12.5px;
   color: var(--textColorAccent);
   position: relative;
   z-index: 1;
 }
 
+.fiche-ligne-nom {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.fiche-nomfamille {
+  font-family: 'Nebula';
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 1;
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 1px;
+  text-align: right;
+  white-space: nowrap;
+}
+
 /* ===================================================================
-   MÉDAILLONS PINTEREST — agrandis
+   MÉDAILLONS PINTEREST — agrandis + effet de rotation au survol
    =================================================================== */
 
 .fiche-medaillons-perso {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
-  margin: 26px 0 30px;
+  gap: 20px;
 }
 .fiche-medaillon-perso {
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+  transition: transform 0.6s ease;
+}
+.fiche-medaillon-perso:hover {
+  transform: rotate(25deg) scale(1.06);
 }
 .fiche-medaillon-perso img {
   width: 100%;
@@ -6215,16 +6198,15 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: block;
 }
 .fiche-medaillon-perso.grand {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border: 2px solid var(--co-2);
   box-shadow: 0 0 16px rgba(0,0,0,0.3);
 }
 .fiche-medaillon-perso.petit {
-  width: 80px;
-  height: 80px;
+  width: 74px;
+  height: 74px;
   border: 2px solid var(--co-1);
-  margin-top: 18px;
 }
 
 /* ===================================================================
@@ -6236,7 +6218,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin: 10px 0 32px;
+  margin: 36px 0 32px;
   color: var(--co-1);
 }
 .fiche-diviseur .trait {
