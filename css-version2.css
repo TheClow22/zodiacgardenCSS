@@ -6436,3 +6436,37 @@ a.fsb-btn:hover{color:var(--co-3)!important}
     height: 56px;
   }
 }
+
+/* ===================================================================
+   TEST DE DIAGNOSTIC — positionnement absolu sur Forum Actif
+   À coller dans le CSS externe, TEMPORAIREMENT, juste pour le test.
+   Tu pourras le supprimer une fois le diagnostic fait.
+   =================================================================== */
+
+.test-conteneur {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background: rgba(255,255,255,0.08);
+  border: 2px dashed yellow;
+}
+
+.test-carre {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background: red;
+  z-index: 999;
+}
+
+.test-carre2 {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background: lime;
+  z-index: 999;
+}
