@@ -6352,7 +6352,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 30px;
-  color: var(--co-1);
+  color: var(--fiche-gradient3);
   margin: 0 0 16px;
   display: flex;
   align-items: center;
