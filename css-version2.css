@@ -6282,32 +6282,44 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-p2-page-gauche { padding-right: 20px; }
 .fiche-p2-page-droite { padding-left: 20px; }
 
-/* Reliure centrale : ligne verticale + fermoir illustré */
+/* Reliure centrale : épaisse bande façon tranche de livre + fermoir */
 .fiche-p2-reliure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   padding-top: 40px;
+  position: relative;
 }
 .fiche-p2-reliure .ligne {
-  width: 1px;
+  width: 6px;
   flex: 1;
-  background: linear-gradient(to bottom, transparent, var(--co-1), var(--co-2), transparent);
-  opacity: 0.5;
+  border-radius: 3px;
+  background: var(--fiche-gradient3);
+  opacity: 0.55;
+  box-shadow: 0 0 8px var(--co-1) inset;
+}
+/* Petits "points de couture" le long de la reliure, pour le côté
+   relié à la main façon grimoire ancien */
+.fiche-p2-reliure .ligne::before,
+.fiche-p2-reliure .ligne::after {
+  content: '';
 }
 .fiche-p2-fermoir {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--fiche-gradient3);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 13px;
-  box-shadow: 0 0 10px var(--co-1);
+  font-size: 14px;
+  box-shadow: 0 0 12px var(--co-1);
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  margin: -1px 0; /* le fermoir chevauche légèrement la barre, comme une vraie boucle */
 }
 
 /* ---------- Titre de section avec icône ---------- */
@@ -6359,53 +6371,53 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   border: 2px solid var(--co-1);
   z-index: 1;
 }
-/* Couronne de glyphes elfiques en arc autour du médaillon (texte
-   courbé via plusieurs spans positionnés, solution CSS pure sans SVG) */
+/* Couronne de glyphes elfiques : texte SVG continu suivant un arc de
+   cercle invisible (textPath), pas de découpage lettre par lettre.
+   Le cercle de référence (path) a un rayon de 105 et démarre en haut
+   à gauche pour suivre le demi-cercle supérieur, comme la référence
+   "texte qui suit le cercle". Pour changer le texte : éditer
+   uniquement le contenu de la balise <textPath> dans le HTML. */
 .fiche-p2-couronne {
   position: absolute;
-  inset: -28px;
+  inset: -34px;
   z-index: 2;
   pointer-events: none;
 }
-.fiche-p2-couronne span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.fiche-p2-couronne svg { width: 100%; height: 100%; overflow: visible; }
+.fiche-p2-couronne text {
   font-family: 'elfique';
-  font-size: 15px;
-  color: var(--co-2);
-  opacity: 0.5;
-  transform-origin: 0 105px; /* rayon de la couronne */
+  font-size: 17px;
+  fill: var(--co-2);
+  opacity: 0.6;
+  letter-spacing: 1px;
 }
 
-/* ---------- Tags "étiquette suspendue" ---------- */
-.fiche-p2-tags {
+
+/* ---------- NUANCIER "CYCLE LUNAIRE" ----------
+   5 pastilles rondes alignées en arc doux, tailles décroissantes
+   vers les extrémités (pleine lune au centre → croissants sur les
+   côtés). Les couleurs se définissent directement en HTML via
+   style="background:#F54927" sur chaque pastille — totalement
+   indépendant de --co-1/--co-2, pour laisser libre choix des teintes
+   du dressing du personnage. */
+.fiche-p2-nuancier {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: center;
-  gap: 18px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin: 4px 0 22px;
 }
-.fiche-p2-tag {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 11px;
-  color: var(--textColor);
+.fiche-p2-pastille {
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  flex-shrink: 0;
 }
-.fiche-p2-tag .fil {
-  width: 1px;
-  height: 10px;
-  background: var(--co-1);
-  opacity: 0.6;
-}
-.fiche-p2-tag .etiquette {
-  background: var(--neutral);
-  border: 1px solid var(--co-1);
-  border-radius: 3px 12px 3px 12px;
-  padding: 4px 10px;
-  margin-top: 2px;
-}
+/* Tailles façon phases lunaires : croissant, gibbeuse, pleine lune,
+   gibbeuse, croissant */
+.fiche-p2-pastille.taille-1 { width: 22px; height: 22px; }
+.fiche-p2-pastille.taille-2 { width: 32px; height: 32px; }
+.fiche-p2-pastille.taille-3 { width: 46px; height: 46px; } /* pleine lune, au centre */
 /* ===================================================================
    FICHE POSTE 2 — SUITE
    Citation elfique + traduction, cartes objets fétiches.
@@ -6495,15 +6507,35 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   z-index: 1;
   width: 64px;
   height: 84px;
-  border-radius: 50% 50% 8px 8px; /* forme ovale façon médaillon */
+  border-radius: 8px 8px 32px 32px; /* arche inversée, même esprit que le portrait du poste 1 */
   overflow: hidden;
   border: 2px solid var(--co-1);
   flex-shrink: 0;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  cursor: zoom-in;
 }
 .fiche-p2-objet-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+/* Effet zoom au survol : l'image s'agrandit et se détache du flux
+   normal pour s'afficher par-dessus tout le reste de la fiche,
+   sans décaler la mise en page. Pas de JS, compatible Forum Actif. */
+.fiche-p2-objet-image:hover {
+  z-index: 50;
+}
+.fiche-p2-objet-image:hover img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 280px;
+  transform: translate(-50%, -50%) scale(1);
+  border-radius: 16px 16px 90px 90px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.7), 0 0 30px var(--co-1);
+  z-index: 999;
   object-fit: cover;
 }
 
@@ -6528,6 +6560,66 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ===================================================================
+   SECTION DRESSING — moodboard style vestimentaire, pleine largeur
+   sous le grimoire. Effet collage : images en grille 3×2 minimum,
+   légèrement chevauchantes et pivotées (voir HTML pour les rotations
+   individuelles), comme des photos posées en vrac.
+   =================================================================== */
+
+.fiche-p2-dressing-section { margin-top: 40px; }
+
+.fiche-p2-dressing-titre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 28px;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.fiche-p2-dressing-titre .cp {
+  font-size: 19px;
+  color: var(--co-1);
+}
+.fiche-p2-dressing-titre .texte-titre {
+  display: inline-block;
+  font-family: 'Nebula';
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fiche-p2-dressing-grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 6px 0; /* gap horizontal réduit volontairement : le chevauchement
+                 vient des marges négatives sur chaque photo, voir HTML */
+  padding: 10px 20px;
+}
+.fiche-p2-dressing-photo {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid var(--lighter); /* effet "polaroid" : cadre clair autour */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+  transition: transform 0.3s ease, z-index 0s;
+}
+.fiche-p2-dressing-photo:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  z-index: 20;
+}
+.fiche-p2-dressing-photo img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ===================================================================
    RESPONSIVE
    =================================================================== */
 @media (max-width: 650px) {
@@ -6550,5 +6642,11 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   }
   .fiche-p2-carte-objet {
     transform: none !important; /* on annule les rotations sur mobile pour la lisibilité */
+  }
+  .fiche-p2-dressing-grille {
+    grid-template-columns: 1fr;
+  }
+  .fiche-p2-dressing-photo {
+    transform: none !important;
   }
 }
