@@ -5832,81 +5832,91 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   color: var(--textColor);
 }
 
-/* ---------- CONTOUR FIXE ARGENT/OR ----------
-   Indépendant de --co-1/--co-2 : reste toujours dans ces tons,
-   même si les couleurs du forum changent. Fait écho au soleil/lune. */
+/* ---------- CONTOUR EN DÉGRADÉ co-1 → co-2 ----------
+   S'adapte automatiquement aux couleurs du personnage via .test. */
 .fiche-zg::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: 24px;
   padding: 1.5px;
-  background: linear-gradient(135deg, #8d9bb0 0%, #d9c9a3 25%, #8d9bb0 50%, #d9c9a3 75%, #8d9bb0 100%);
+  background: var(--fiche-gradient3);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
   z-index: 5;
   opacity: 0.7;
+  animation: fiche-pulse-bord 4s ease-in-out infinite;
 }
-/* Glow doux autour du contour : bleu froid dominant + or très atténué */
+@keyframes fiche-pulse-bord {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+/* Glow conservé, maintenant en co-1/co-2 dynamiques.
+   Note: on utilise box-shadow avec des couleurs directes car rgba()
+   ne peut pas accepter une variable CSS comme canal de couleur. */
 .fiche-zg::after {
   content: '';
   position: absolute;
   inset: -3px;
   border-radius: 26px;
   box-shadow:
-    0 0 16px rgba(141, 155, 176, 0.45),
-    0 0 18px rgba(217, 201, 163, 0.2);
+    0 0 18px var(--co-1),
+    0 0 12px var(--co-2);
   pointer-events: none;
   z-index: 4;
+  opacity: 0.35;
+  animation: fiche-pulse-bord 4s ease-in-out infinite;
 }
 
-/* ---------- MÉDAILLONS SOLEIL/LUNE (validés, inchangés) ---------- */
+/* ---------- MÉDAILLONS DE COIN — cappuccicons cp-stars ----------
+   Remplacent les images PNG fixes. S'adaptent aux couleurs du
+   personnage. Animation : glow pulsé + légère rotation continue. */
 .fiche-medaillon {
   position: absolute;
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  overflow: hidden;
   z-index: 6;
   background: var(--neutralDarker);
-  box-shadow: 0 0 14px rgba(0,0,0,0.4);
+  border: 2px solid var(--co-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 12px var(--co-1),
+    0 0 6px var(--co-2) inset;
+  animation: fiche-medaillon-magie 4s ease-in-out infinite;
 }
-.fiche-medaillon::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid #a8b6c9;
-  box-shadow: 0 0 10px rgba(168, 182, 201, 0.55) inset, 0 0 10px rgba(217, 201, 163, 0.25);
+@keyframes fiche-medaillon-magie {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--co-1), 0 0 4px var(--co-2) inset;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--co-1), 0 0 10px var(--co-2) inset;
+    transform: scale(1.06);
+  }
 }
-.fiche-medaillon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* L'icône cp-stars elle-même, en dégradé via filter hue + couleur */
+.fiche-medaillon .cp {
+  font-size: 28px;
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: fiche-medaillon-rotate 8s linear infinite;
+}
+@keyframes fiche-medaillon-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 .fiche-medaillon.tl { top: -20px; left: -20px; }
 .fiche-medaillon.tr { top: -20px; right: -20px; }
 .fiche-medaillon.bl { bottom: -20px; left: -20px; }
 .fiche-medaillon.br { bottom: -20px; right: -20px; }
-
-.fiche-ciel {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.fiche-ciel span {
-  position: absolute;
-  color: #fff;
-  animation: fiche-scintille 3.4s ease-in-out infinite;
-}
-@keyframes fiche-scintille {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.9; }
-}
 
 .fiche-zg > *:not(.fiche-medaillon) {
   position: relative;
