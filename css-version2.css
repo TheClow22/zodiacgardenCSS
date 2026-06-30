@@ -6166,3 +6166,389 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   .fiche-citation { max-width: 100%; text-align: left; margin-left: 0; }
   .fiche-medaillon { width: 44px; height: 44px; }
 }
+
+/* ===================================================================
+   FICHE POSTE 2 — STYLE & OBJETS FÉTICHES
+   ===================================================================
+   Réutilise le même système de couleurs --co-1/--co-2 que le poste 1
+   (donc --fiche-gradient3, présent ici aussi en local sur .fiche-zg-p2
+   pour fonctionner même si ce poste est posté seul, sans le poste 1
+   sur la même page).
+   Police 'elfique' = décorative UNIQUEMENT (jamais pour du texte à
+   lire), toujours doublée d'une traduction/légende en Daisy ou texte
+   normal juste à côté.
+   =================================================================== */
+
+.fiche-zg-p2 {
+  --fiche-gradient3: linear-gradient(135deg, var(--co-1), var(--co-2), var(--co-1));
+  position: relative;
+  max-width: 735px;
+  margin: 20px auto;
+  padding: 36px 30px;
+  border-radius: 24px;
+  background: var(--lighter);
+  overflow: visible;
+  font-family: var(--font);
+  color: var(--textColor);
+}
+.fiche-zg-p2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1.5px;
+  background: var(--fiche-gradient3);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.7;
+  animation: fiche-pulse-bord-p2 4s ease-in-out infinite;
+}
+.fiche-zg-p2::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 26px;
+  box-shadow: 0 0 18px var(--co-1), 0 0 12px var(--co-2);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.2;
+  animation: fiche-pulse-bord-p2 4s ease-in-out infinite;
+}
+@keyframes fiche-pulse-bord-p2 { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+
+.fiche-zg-p2 > * { position: relative; z-index: 1; }
+
+/* ===================================================================
+   TITRE DE PAGE + INSCRIPTION ELFIQUE DÉCORATIVE
+   =================================================================== */
+
+.fiche-p2-entete { text-align: center; margin-bottom: 8px; }
+.fiche-p2-titre {
+  font-family: 'Nebula';
+  text-transform: uppercase;
+  font-size: 34px;
+  letter-spacing: 2px;
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  display: inline-block;
+}
+/* Ligne de glyphes elfiques sous le titre : purement décorative,
+   très atténuée en opacité, ne porte aucune information à lire */
+.fiche-p2-glyphes {
+  font-family: 'elfique';
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--co-2);
+  opacity: 0.45;
+  margin: 4px 0 0;
+}
+
+/* Diviseur organique du haut, différent du poste 1 pour varier */
+.fiche-p2-diviseur {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 34px;
+  color: var(--textColorAccent);
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 0.85;
+}
+.fiche-p2-diviseur .trait {
+  flex: 1;
+  height: 1px;
+  background: var(--fiche-gradient3);
+  opacity: 0.5;
+}
+
+/* ===================================================================
+   SECTION STYLE — colonne gauche du grimoire
+   =================================================================== */
+
+.fiche-p2-grimoire {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+.fiche-p2-page-gauche { padding-right: 20px; }
+.fiche-p2-page-droite { padding-left: 20px; }
+
+/* Reliure centrale : ligne verticale + fermoir illustré */
+.fiche-p2-reliure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 40px;
+}
+.fiche-p2-reliure .ligne {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, transparent, var(--co-1), var(--co-2), transparent);
+  opacity: 0.5;
+}
+.fiche-p2-fermoir {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--fiche-gradient3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  box-shadow: 0 0 10px var(--co-1);
+  flex-shrink: 0;
+}
+
+/* ---------- Titre de section avec icône ---------- */
+.fiche-p2-section-titre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.fiche-p2-section-titre .cp {
+  font-size: 20px;
+  color: var(--co-1);
+}
+.fiche-p2-section-titre .texte-titre {
+  display: inline-block;
+  font-family: 'Nebula';
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---------- Médaillon principal avec couronne elfique ---------- */
+.fiche-p2-portrait-style {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.fiche-p2-portrait-style-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: var(--fiche-gradient3);
+  filter: blur(20px);
+  opacity: 0.35;
+  animation: fiche-glow-respire-p2 4s ease-in-out infinite;
+}
+@keyframes fiche-glow-respire-p2 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.45; } }
+.fiche-p2-portrait-style img {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--co-1);
+  z-index: 1;
+}
+/* Couronne de glyphes elfiques en arc autour du médaillon (texte
+   courbé via plusieurs spans positionnés, solution CSS pure sans SVG) */
+.fiche-p2-couronne {
+  position: absolute;
+  inset: -28px;
+  z-index: 2;
+  pointer-events: none;
+}
+.fiche-p2-couronne span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'elfique';
+  font-size: 15px;
+  color: var(--co-2);
+  opacity: 0.5;
+  transform-origin: 0 105px; /* rayon de la couronne */
+}
+
+/* ---------- Tags "étiquette suspendue" ---------- */
+.fiche-p2-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.fiche-p2-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: var(--textColor);
+}
+.fiche-p2-tag .fil {
+  width: 1px;
+  height: 10px;
+  background: var(--co-1);
+  opacity: 0.6;
+}
+.fiche-p2-tag .etiquette {
+  background: var(--neutral);
+  border: 1px solid var(--co-1);
+  border-radius: 3px 12px 3px 12px;
+  padding: 4px 10px;
+  margin-top: 2px;
+}
+/* ===================================================================
+   FICHE POSTE 2 — SUITE
+   Citation elfique + traduction, cartes objets fétiches.
+   À coller après la partie 1.
+   =================================================================== */
+
+/* ===================================================================
+   CITATION ELFIQUE DÉCORATIVE + TRADUCTION
+   =================================================================== */
+
+.fiche-p2-citation-bloc {
+  text-align: center;
+  margin: 24px 0 8px;
+  padding: 16px 10px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+/* La phrase "illisible" en elfique : grande, décorative, c'est elle
+   qui porte l'ambiance visuelle */
+.fiche-p2-citation-elfique {
+  font-family: 'elfique';
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--co-1);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+/* Sa "traduction" juste en dessous, en Daisy, c'est elle qui est
+   réellement lisible et porte le sens */
+.fiche-p2-citation-traduction {
+  font-family: 'Daisy', serif;
+  font-size: 20px;
+  font-style: normal;
+  color: var(--textColorAccent);
+  margin: 0;
+}
+.fiche-p2-citation-traduction::before,
+.fiche-p2-citation-traduction::after {
+  content: '✧';
+  color: var(--co-2);
+  font-size: 12px;
+  margin: 0 8px;
+  opacity: 0.7;
+}
+
+/* ===================================================================
+   SECTION OBJETS FÉTICHES — colonne droite du grimoire
+   =================================================================== */
+
+.fiche-p2-objets {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Chaque carte est légèrement pivotée différemment (voir HTML :
+   style="transform:rotate(...)" par objet) pour casser l'alignement
+   strict, façon cartes posées sur une table */
+.fiche-p2-carte-objet {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--neutral);
+  border-radius: 4px 22px 4px 22px;
+  border: 1px solid var(--co-2);
+  padding: 14px 16px;
+}
+
+/* Cappuccicon en filigrane derrière la carte, selon la nature
+   magique de l'objet (clé, fiole, plume, etc.) */
+.fiche-p2-carte-objet::before {
+  content: attr(data-icone);
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
+  font-family: 'cappuccicons';
+  font-size: 46px;
+  color: var(--co-1);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fiche-p2-objet-image {
+  position: relative;
+  z-index: 1;
+  width: 64px;
+  height: 84px;
+  border-radius: 50% 50% 8px 8px; /* forme ovale façon médaillon */
+  overflow: hidden;
+  border: 2px solid var(--co-1);
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.fiche-p2-objet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fiche-p2-objet-texte { position: relative; z-index: 1; flex: 1; }
+.fiche-p2-objet-nom {
+  font-family: 'Nebula';
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1px;
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 6px;
+}
+.fiche-p2-objet-desc {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--textColor);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===================================================================
+   RESPONSIVE
+   =================================================================== */
+@media (max-width: 650px) {
+  .fiche-p2-grimoire { grid-template-columns: 1fr; }
+  .fiche-p2-reliure {
+    flex-direction: row;
+    padding-top: 0;
+    margin: 24px 0;
+  }
+  .fiche-p2-reliure .ligne {
+    width: auto;
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, transparent, var(--co-1), var(--co-2), transparent);
+  }
+  .fiche-p2-page-gauche,
+  .fiche-p2-page-droite {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .fiche-p2-carte-objet {
+    transform: none !important; /* on annule les rotations sur mobile pour la lisibilité */
+  }
+}
