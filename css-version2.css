@@ -6040,80 +6040,176 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   opacity: 0.6;
 }
 
-/* Médaillons Pinterest, sous le diviseur */
-.fiche-medaillons-perso { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 4px 0 32px; }
-.fiche-medaillon-perso { border-radius: 50%; overflow: hidden; flex-shrink: 0; transition: transform 0.6s ease; }
-.fiche-medaillon-perso:hover { transform: rotate(25deg) scale(1.06); }
-.fiche-medaillon-perso img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.fiche-medaillon-perso.grand { width: 110px; height: 110px; border: 2px solid var(--co-2); box-shadow: 0 0 16px rgba(0,0,0,0.3); }
-.fiche-medaillon-perso.petit { width: 74px; height: 74px; border: 2px solid var(--co-1); }
+/* ===== SECTION CENTRALE : PARTITION ASTRALE (gauche) | IMAGE+COURONNE (droite) ===== */
 
-/* Diviseur décoratif : trait en dégradé, symboles en textColorAccent */
-.fiche-diviseur { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 36px 0 32px; }
-.fiche-diviseur .trait { background: var(--fiche-gradient3); height: 1px; opacity: 0.6; flex: 1; }
-.fiche-diviseur .centre { font-size: 15px; letter-spacing: 4px; opacity: 0.9; color: var(--textColorAccent); }
-.fiche-diviseur .centre .cp,
-.fiche-diviseur .centre .sf,
-.fiche-diviseur .centre .th { font-size: 16px; color: var(--co-2); }
-
-/* Playlist */
-.fiche-playlist { display: flex; align-items: center; gap: 16px; background: var(--neutral); border-radius: 16px; border: 1px solid var(--co-1); padding: 14px 20px; margin-bottom: 32px; }
-.fiche-playlist-titre { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.15); }
-.fiche-playlist-titre .cp,
-.fiche-playlist-titre .sf,
-.fiche-playlist-titre .th { font-size: 20px; color: var(--co-1); animation: fiche-note-flotte 2.4s ease-in-out infinite; }
-@keyframes fiche-note-flotte { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-.fiche-playlist-titre span { font-family: var(--font-3); text-transform: uppercase; letter-spacing: 1px; font-size: 9px; color: var(--textColorAccent); }
-.fiche-playlist-pistes { display: flex; gap: 16px; flex-wrap: wrap; }
-.fiche-piste { font-size: 11px; display: flex; align-items: center; gap: 5px; }
-.fiche-piste .cp,
-.fiche-piste .sf,
-.fiche-piste .th { color: var(--co-2); }
-.fiche-piste a { color: var(--textColorAccent) !important; text-decoration: none; }
-.fiche-piste a:hover { color: var(--co-1) !important; }
-
-/* Pêle-mêle : 3 colonnes, ruban enchanté (Daisy, sans fond plein) */
-.fiche-pele-mele-grille { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-.fiche-pele-case { background: transparent; text-align: center; }
-.fiche-pele-titre {
-  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
-  background: transparent;
-  border-bottom: 1px solid var(--co-1);
-  padding: 6px 8px;
-  font-family: 'Daisy', serif;
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--textColorAccent);
+.fiche-section-centrale {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 0 0 32px;
 }
-.fiche-pele-titre .cp,
-.fiche-pele-titre .sf,
-.fiche-pele-titre .th {
-  background: var(--fiche-gradient3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-flex;
-  align-items: center;
+
+/* --- Partition astrale --- */
+.fiche-partition {
+  position: relative;
+  background: var(--neutral);
+  border-radius: 4px 22px 4px 22px;
+  border: 1px solid var(--co-1);
+  padding: 18px 20px 22px;
+}
+.fiche-partition-titre {
+  font-family: 'Daisy', serif;
   font-size: 22px;
-  line-height: 1;
+  font-weight: 400;
+  color: var(--textColorAccent);
+  text-align: center;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.fiche-partition-titre .cp,
+.fiche-partition-titre .sf,
+.fiche-partition-titre .th { color: var(--co-1); font-size: 18px; }
+
+/* Portée SVG : les lignes de partition sont dans le SVG, les liens
+   sont positionnés entre elles via du HTML normal par-dessus */
+.fiche-portee {
+  position: relative;
+  margin: 8px 0;
+}
+.fiche-portee svg {
+  width: 100%;
+  display: block;
+}
+.fiche-portee-lignes line {
+  stroke: var(--co-1);
+  stroke-width: 0.8;
+  opacity: 0.3;
+}
+/* Les 3 pistes flottent entre les lignes SVG via position absolute */
+.fiche-portee-pistes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 12px;
+}
+.fiche-piste-partition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  background: var(--neutralDark);
+  border-radius: 20px;
+  padding: 5px 12px;
+  width: fit-content;
+  max-width: 100%;
+}
+.fiche-piste-partition .symbole {
+  color: var(--co-2);
+  font-size: 15px;
   flex-shrink: 0;
 }
-.fiche-pele-valeur { padding: 6px 10px 10px; font-size: 12px; color: var(--textColor); }
+.fiche-piste-partition a {
+  color: var(--textColorAccent) !important;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fiche-piste-partition a:hover { color: var(--co-1) !important; }
 
-/* ===== POUVOIRS (élémentaire + zodiacal côte à côte) ===== */
+/* Marque-page "sf-bookmark" épinglé en haut comme une feuille de parchemin */
+.fiche-partition-marque {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  font-size: 28px;
+  color: var(--co-2);
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
 
-.fiche-bloc-pouvoirs { position: relative; background: var(--neutral); border-radius: 6px 26px 6px 26px; border-left: 3px solid var(--co-1); padding: 22px 26px; margin: 0 0 28px; }
-.fiche-bloc-pouvoirs::before { content: '✦'; position: absolute; top: 8px; right: 12px; font-size: 10px; color: var(--co-2); opacity: 0.5; }
+/* --- Image ronde + couronne elfique (SVG textPath) --- */
+.fiche-image-ronde-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+}
+.fiche-image-ronde {
+  position: relative;
+  width: 190px;
+  height: 190px;
+}
+.fiche-image-ronde-glow {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: var(--fiche-gradient3);
+  filter: blur(22px);
+  opacity: 0.35;
+  animation: fiche-glow-respire 4s ease-in-out infinite;
+}
+.fiche-image-ronde img {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--co-1);
+  z-index: 1;
+  display: block;
+}
+/* Couronne elfique SVG textPath, demi-cercle supérieur */
+.fiche-couronne-svg {
+  position: absolute;
+  inset: -34px;
+  z-index: 2;
+  pointer-events: none;
+  width: calc(100% + 68px);
+  height: calc(100% + 68px);
+  overflow: visible;
+}
+.fiche-couronne-svg text {
+  font-family: 'elfique';
+  font-size: 17px;
+  fill: var(--co-2);
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
 
-/* Titre de bloc : icône reste teintée co-1 (.cp/.sf/.th), texte en dégradé Nebula
-   via <span class="texte-titre"> dans le HTML (nécessite display:inline-block
-   pour que background-clip:text fonctionne correctement) */
-.fiche-bloc-titre { text-transform: uppercase; letter-spacing: 2px; font-size: 30px; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
-.fiche-bloc-titre .cp,
-.fiche-bloc-titre .sf,
-.fiche-bloc-titre .th { font-size: 25px; color: var(--co-1); }
-.fiche-bloc-titre .texte-titre {
+/* ===== POUVOIRS EN ACCORDÉON VERTICAL ===== */
+
+.fiche-accordeon { margin: 0 0 28px; }
+.fiche-accordeon-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--neutral);
+  border: none;
+  border-left: 3px solid var(--co-1);
+  border-radius: 6px 26px 6px 26px;
+  padding: 16px 22px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--textColor);
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+.fiche-accordeon-btn::before { content: '✦'; position: absolute; top: 8px; right: 12px; font-size: 10px; color: var(--co-2); opacity: 0.5; }
+.fiche-accordeon-btn .cp,
+.fiche-accordeon-btn .sf,
+.fiche-accordeon-btn .th { font-size: 25px; color: var(--co-1); }
+.fiche-accordeon-btn .texte-titre {
   display: inline-block;
   font-family: 'Nebula';
   background: var(--fiche-gradient3);
@@ -6121,48 +6217,117 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+/* Flèche animée à droite du titre */
+.fiche-accordeon-fleche {
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--co-2);
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+.fiche-accordeon-btn.ouvert .fiche-accordeon-fleche { transform: rotate(180deg); }
+
+/* Corps de l'accordéon : overflow:hidden + transition max-height via JS */
+.fiche-accordeon-corps {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fiche-accordeon-interieur {
+  padding: 22px 26px 10px;
+  background: var(--neutral);
+  border-radius: 0 0 26px 6px;
+  border: 1px solid var(--co-1);
+  border-top: none;
+}
+
+/* Chaque pouvoir est maintenant vertical */
+.fiche-pouvoir-bloc {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+}
+.fiche-pouvoir-bloc:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+
+/* Stades du pouvoir zodiacal */
+.fiche-stades { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.fiche-stade {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 12px;
+}
+.fiche-stade-badge {
+  font-family: 'Nebula';
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.fiche-stade-actif .fiche-stade-badge { opacity: 1; }
+.fiche-stade-non-actif .fiche-stade-badge { opacity: 0.35; }
+.fiche-stade-texte { color: var(--textColor); line-height: 1.45; }
+.fiche-stade-non-actif .fiche-stade-texte { opacity: 0.45; font-style: italic; }
+
+/* Diviseur décoratif */
+.fiche-diviseur { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 36px 0 32px; }
+.fiche-diviseur .trait { background: var(--fiche-gradient3); height: 1px; opacity: 0.6; flex: 1; }
+.fiche-diviseur .centre { font-size: 15px; letter-spacing: 4px; opacity: 0.9; color: var(--textColorAccent); }
+.fiche-diviseur .centre .cp,
+.fiche-diviseur .centre .sf,
+.fiche-diviseur .centre .th { font-size: 16px; color: var(--co-2); }
+
+/* Pêle-mêle : 3 colonnes, ruban enchanté (Daisy, sans fond plein) */
+.fiche-pele-mele-grille { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.fiche-pele-case { background: transparent; text-align: center; }
+.fiche-pele-titre { display: flex; align-items: center; justify-content: flex-start; gap: 8px; background: transparent; border-bottom: 1px solid var(--co-1); padding: 6px 8px; font-family: 'Daisy', serif; font-size: 25px; font-weight: 400; line-height: 1; color: var(--textColorAccent); }
+.fiche-pele-titre .cp,
+.fiche-pele-titre .sf,
+.fiche-pele-titre .th { background: var(--fiche-gradient3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-flex; align-items: center; font-size: 22px; line-height: 1; flex-shrink: 0; }
+.fiche-pele-valeur { padding: 6px 10px 10px; font-size: 12px; color: var(--textColor); }
+
+/* Titre de bloc : icône reste teintée co-1, texte dégradé Nebula via .texte-titre */
+.fiche-bloc-titre { text-transform: uppercase; letter-spacing: 2px; font-size: 30px; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
+.fiche-bloc-titre .cp,
+.fiche-bloc-titre .sf,
+.fiche-bloc-titre .th { font-size: 25px; color: var(--co-1); }
+.fiche-bloc-titre .texte-titre { display: inline-block; font-family: 'Nebula'; background: var(--fiche-gradient3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .fiche-bloc-titre::after { content: ''; display: block; width: 30px; height: 1px; background: linear-gradient(to right, var(--co-2), transparent); margin-left: 4px; align-self: center; }
 
-.fiche-pouvoirs-cote-a-cote { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.fiche-pouvoirs-cote-a-cote > div:first-child { border-right: 1px dashed rgba(255,255,255,0.15); padding-right: 24px; }
-.fiche-pouvoir-entete { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.fiche-pouvoir-icone,
-.fiche-pouvoir-icone.sf,
-.fiche-pouvoir-icone.th {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--fiche-gradient3);
-  color: white;
-  font-size: 18px;
-  flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-.fiche-pouvoir-nom { font-size: 13px; font-weight: 600; color: var(--co-2); text-transform: uppercase; letter-spacing: 0.5px; }
-.fiche-pouvoir-desc { font-style: italic; font-size: 11.5px; margin: 0 0 10px; color: var(--textColor); }
+/* Traits physiques */
+.fiche-bloc-traits { background: var(--neutral); border-radius: 26px 6px 26px 6px; border-right: 3px solid var(--co-2); padding: 20px 26px; margin-bottom: 28px; }
+.fiche-trait-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fiche-trait { font-size: 12px; line-height: 1.4; margin: 0; }
+.fiche-trait b { color: var(--co-2); text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
 
 /* Jauges en arc SVG (rayon 23, circonférence 144.5) */
-.fiche-arcs-row { display: flex; justify-content: center; gap: 14px; }
-.fiche-arc { position: relative; width: 54px; height: 54px; margin: 0 auto; }
+.fiche-arcs-row { display: flex; justify-content: flex-start; gap: 14px; }
+.fiche-arc { position: relative; width: 54px; height: 54px; }
 .fiche-arc svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .fiche-arc .fond { fill: none; stroke: var(--neutralDark); stroke-width: 7; }
 .fiche-arc .progres { fill: none; stroke: var(--co-1); stroke-width: 7; stroke-linecap: round; filter: drop-shadow(0 0 2px var(--co-1)); }
 .fiche-arc .valeur { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--textColorAccent); }
 .fiche-arc-label { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--textColorAccent); text-align: center; margin-top: 3px; }
 
-/* ===== TRAITS PHYSIQUES ===== */
-
-.fiche-bloc-traits { background: var(--neutral); border-radius: 26px 6px 26px 6px; border-right: 3px solid var(--co-2); padding: 20px 26px; }
-.fiche-trait-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.fiche-trait { font-size: 12px; line-height: 1.4; margin: 0; }
-.fiche-trait b { color: var(--co-2); text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+/* Entête pouvoir (icône + nom) */
+.fiche-pouvoir-entete { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.fiche-pouvoir-icone,
+.fiche-pouvoir-icone.sf,
+.fiche-pouvoir-icone.th { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--fiche-gradient3); color: white; font-size: 18px; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+.fiche-pouvoir-nom { font-size: 13px; font-weight: 600; color: var(--co-2); text-transform: uppercase; letter-spacing: 0.5px; }
+.fiche-pouvoir-desc { font-style: italic; font-size: 11.5px; margin: 0 0 10px; color: var(--textColor); }
 
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 650px) {
   .fiche-header { grid-template-columns: 1fr; }
-  .fiche-pouvoirs-cote-a-cote, .fiche-trait-grille, .fiche-pele-mele-grille { grid-template-columns: 1fr; }
-  .fiche-pouvoirs-cote-a-cote > div:first-child { border-right: none; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-right: 0; padding-bottom: 20px; margin-bottom: 16px; }
+  .fiche-section-centrale { grid-template-columns: 1fr; }
+  .fiche-trait-grille, .fiche-pele-mele-grille { grid-template-columns: 1fr; }
   .fiche-citation { max-width: 100%; text-align: left; margin-left: 0; }
   .fiche-medaillon { width: 44px; height: 44px; }
 }
