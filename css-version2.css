@@ -6326,14 +6326,16 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-p2-section-titre {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 0 0 18px;
-  font-size: 22px;
+  font-size: 26px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-.fiche-p2-section-titre .cp {
-  font-size: 20px;
+.fiche-p2-section-titre .cp,
+.fiche-p2-section-titre .sf,
+.fiche-p2-section-titre .th {
+  font-size: 24px;
   color: var(--co-1);
 }
 .fiche-p2-section-titre .texte-titre {
@@ -6435,21 +6437,20 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-/* La phrase "illisible" en elfique : grande, décorative, c'est elle
-   qui porte l'ambiance visuelle */
+/* La phrase en elfique : réduite pour tenir sur une ligne */
 .fiche-p2-citation-elfique {
   font-family: 'elfique';
-  font-size: 22px;
-  letter-spacing: 2px;
+  font-size: 14px;
+  letter-spacing: 1px;
   color: var(--co-1);
   margin: 0 0 8px;
-  line-height: 1.4;
+  line-height: 1.2;
+  white-space: nowrap;
 }
-/* Sa "traduction" juste en dessous, en Daisy, c'est elle qui est
-   réellement lisible et porte le sens */
+/* La traduction en Daisy : agrandie pour être bien visible */
 .fiche-p2-citation-traduction {
   font-family: 'Daisy', serif;
-  font-size: 20px;
+  font-size: 26px;
   font-style: normal;
   color: var(--textColorAccent);
   margin: 0;
@@ -6458,7 +6459,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-p2-citation-traduction::after {
   content: '✧';
   color: var(--co-2);
-  font-size: 12px;
+  font-size: 14px;
   margin: 0 8px;
   opacity: 0.7;
 }
@@ -6572,14 +6573,16 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin: 0 0 28px;
-  font-size: 22px;
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-.fiche-p2-dressing-titre .cp {
-  font-size: 19px;
+.fiche-p2-dressing-titre .cp,
+.fiche-p2-dressing-titre .sf,
+.fiche-p2-dressing-titre .th {
+  font-size: 24px;
   color: var(--co-1);
 }
 .fiche-p2-dressing-titre .texte-titre {
