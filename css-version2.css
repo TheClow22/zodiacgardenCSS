@@ -6552,3 +6552,148 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-bloc-titre .texte-titre {
   color: red !important;
 }
+/* ===================================================================
+   PATCH ELFIQUE — à coller À LA SUITE de tes 3 blocs CSS existants
+   (pas de remplacement, juste des ajouts/surcharges ciblées)
+   Ces règles modifient l'atmosphère visuelle sans toucher à la
+   structure ni aux animations déjà validées.
+   =================================================================== */
+
+/* ===================================================================
+   1. POLICES — apporter le côté cursif/féerique
+   =================================================================== */
+
+/* Citation : Ballet en minuscules, plus manuscrit que Libre Baskerville */
+.fiche-citation {
+  font-family: 'Ballet', 'Libre Baskerville', serif;
+  font-size: 12px;
+  font-style: normal; /* Ballet n'a pas besoin d'italique, sa forme est déjà cursive */
+  letter-spacing: 0.3px;
+}
+
+/* Pseudo haut/bas : on garde Nebula (il évoque bien les astres),
+   mais on réduit le letter-spacing qui donnait un effet "titre UI" */
+.fiche-pseudo-haut,
+.fiche-pseudo-bas {
+  letter-spacing: 0px;
+}
+
+/* Labels du pêle-mêle : Ballet en minuscules, façon étiquette enchantée */
+.fiche-pele-titre {
+  font-family: 'Ballet', serif;
+  font-size: 12px;
+  text-transform: none; /* désactive le uppercase qui cassait le côté cursif */
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+/* ===================================================================
+   2. SÉPARATEUR — plus irrégulier, plus organique, moins symétrique
+   =================================================================== */
+
+/* On surcharge le contenu du .centre pour y mettre des symboles
+   plus évocateurs. Note : le texte est écrit directement en HTML
+   donc on ne peut pas le changer ici. À la place on stylise
+   les traits latéraux pour qu'ils soient pointillés et irréguliers */
+.fiche-diviseur .trait {
+  background: none;
+  border-top: 1px dotted var(--co-1);
+  opacity: 0.6;
+  height: 0;
+  flex: 1;
+}
+.fiche-diviseur .centre {
+  font-size: 15px;
+  letter-spacing: 4px;
+  opacity: 0.85;
+}
+
+/* ===================================================================
+   3. ÉTIQUETTES PÊLE-MÊLE — "ruban enchanté" au lieu de bouton UI
+   =================================================================== */
+
+.fiche-pele-case {
+  background: transparent; /* plus de fond de case */
+  border-radius: 0;
+  padding: 0;
+}
+
+.fiche-pele-titre {
+  background: transparent; /* plus de remplissage plein */
+  color: var(--co-1);
+  border: none;
+  border-bottom: 1px solid var(--co-1);
+  border-radius: 0;
+  padding: 4px 8px;
+  justify-content: flex-start;
+  gap: 6px;
+  position: relative;
+}
+
+/* Petits ornements aux extrémités du titre, façon ruban */
+.fiche-pele-titre::before,
+.fiche-pele-titre::after {
+  content: '✦';
+  font-family: inherit;
+  font-size: 8px;
+  color: var(--co-2);
+  opacity: 0.7;
+}
+.fiche-pele-titre::before {
+  margin-right: 2px;
+}
+.fiche-pele-titre::after {
+  margin-left: auto;
+}
+
+.fiche-pele-valeur {
+  padding: 6px 10px 10px;
+  font-size: 12px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* ===================================================================
+   4. COINS ORGANIQUES — petits ornements sur les blocs principaux
+   =================================================================== */
+
+/* Coin haut-gauche sur le bloc pouvoirs */
+.fiche-bloc-pouvoirs::before {
+  content: '✦';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: var(--co-2);
+  opacity: 0.5;
+}
+
+/* Petite ligne courbe décorative sous le titre de chaque bloc,
+   via un ornement Unicode qui évoque une volute */
+.fiche-bloc-titre::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(to right, var(--co-2), transparent);
+  margin-left: 4px;
+  align-self: center;
+}
+
+/* Glow des jauges adouci — moins électronique */
+.fiche-arc .progres {
+  filter: drop-shadow(0 0 2px var(--co-1)); /* réduit de 3px à 2px */
+}
+
+/* ===================================================================
+   5. BORDURE DE LA FICHE — moins néon, plus doux
+   =================================================================== */
+
+/* On réduit l'opacité du glow externe pour qu'il soit plus subtil */
+.fiche-zg::after {
+  opacity: 0.2; /* réduit de 0.35 à 0.2 */
+}
+
+/* Bordure portrait légèrement plus fine et moins "écran" */
+.fiche-portrait {
+  border-width: 1px; /* réduit de 2px à 1px */
+}
