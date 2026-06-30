@@ -6679,3 +6679,86 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fiche-portrait {
   border-width: 1px;
 }
+
+/* ===================================================================
+   PATCH COMPATIBILITÉ ICÔNES — sf (Saturne icons) et th
+   ===================================================================
+   À coller à la TOUTE FIN de ton CSS externe (après tout le reste).
+   Ce patch étend les styles déjà définis pour les cappuccicons (.cp)
+   aux deux nouvelles familles d'icônes (.sf et .th), pour qu'elles
+   prennent la même couleur/taille/dégradé partout dans la fiche.
+   Tu n'as RIEN à changer dans ton HTML existant : tes futures icônes
+   sf/th, où que tu les utilises dans la fiche, profiteront
+   automatiquement de ces styles si elles sont placées dans les mêmes
+   zones que celles listées ci-dessous.
+   =================================================================== */
+
+/* ---------- Médaillons des 4 coins (soleil/lune/icônes) ---------- */
+.fiche-medaillon .sf,
+.fiche-medaillon .th {
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 28px;
+  display: inline-block;
+  animation: fiche-medaillon-rotate 8s linear infinite;
+}
+
+/* ---------- Symboles au centre du diviseur ---------- */
+.fiche-diviseur .centre .sf,
+.fiche-diviseur .centre .th {
+  font-size: 16px;
+  color: var(--co-2);
+}
+
+/* ---------- Icône de la playlist (haut-parleur/note) ---------- */
+.fiche-playlist-titre .sf,
+.fiche-playlist-titre .th {
+  font-size: 20px;
+  color: var(--co-1);
+  animation: fiche-note-flotte 2.4s ease-in-out infinite;
+}
+
+/* ---------- Icônes devant chaque piste de musique ---------- */
+.fiche-piste .sf,
+.fiche-piste .th {
+  color: var(--co-2);
+}
+
+/* ---------- Icônes des titres pêle-mêle (dégradé, agrandi) ---------- */
+.fiche-pele-titre .sf,
+.fiche-pele-titre .th {
+  background: var(--fiche-gradient3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-flex;
+  align-items: center;
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ---------- Icônes des titres de bloc (Pouvoirs / Traits physiques) ---------- */
+.fiche-bloc-titre .sf,
+.fiche-bloc-titre .th {
+  font-size: 17px;
+  color: var(--co-1);
+}
+
+/* ---------- Icône à côté du nom de pouvoir élémentaire/zodiacal ---------- */
+.fiche-pouvoir-icone.sf,
+.fiche-pouvoir-icone.th {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fiche-gradient3);
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
