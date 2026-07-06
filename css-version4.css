@@ -5084,7 +5084,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   margin: 0;
   white-space: nowrap;
 }
-.pa-fae-news-title .cp {
+.pa-fae-news-title .th {
   font-size: 13px;
   background: var(--co-gradient);
   -webkit-background-clip: text;
