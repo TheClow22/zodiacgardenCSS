@@ -5853,3 +5853,147 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 
 /* La version mobile (@media max-width: 650px) du poste 2 est fusionnée
    avec celle du poste 1, tout en haut du fichier. */
+
+/* ===== STELLARY - ONGLET A (PROFIL) ===== */
+.stell-wrap{width:100%;max-width:720px;margin:0 auto;font-family:'Libre Baskerville';color:var(--textColor);position:relative;}
+.stell-nav{display:flex;justify-content:center;gap:6px;background:linear-gradient(var(--lighter),var(--lighter)) padding-box,var(--co-gradient) border-box;border:1.5px solid transparent;border-radius:40px;padding:8px;margin-bottom:30px;}
+.stell-nav a{flex:1;text-align:center;padding:8px 4px;border-radius:30px;color:var(--textColorAccent)!important;text-decoration:none;font-family:'Libre Baskerville';font-size:13px;letter-spacing:.5px;transition:all .4s;}
+.stell-nav a i{display:block;font-size:17px;margin-bottom:3px;color:var(--textColorAccent)!important;}
+.stell-nav a.active{background:var(--co-gradient);color:var(--white)!important;box-shadow:0 0 10px var(--co-1),0 0 18px var(--co-3);}
+.stell-nav a.active i{color:var(--white)!important;}
+.stell-profil{position:relative;background:linear-gradient(var(--neutralDark),var(--neutralDark)) padding-box,var(--co-gradient) border-box;border:1.5px solid transparent;border-radius:120px 30px 100px 40px/60px 90px 40px 100px;padding:60px 40px 50px;overflow:visible;box-shadow:0 0 18px var(--co-1),0 0 30px var(--co-3);}
+.stell-status-dot{position:absolute;top:26px;right:34px;width:14px;height:14px;border-radius:50%;background:#7ee08c;box-shadow:0 0 8px #7ee08c,0 0 16px #7ee08c;animation:stell-pulse-dot 2s infinite;}
+.stell-status-dot.offline{background:#e0716a;box-shadow:0 0 8px #e0716a,0 0 16px #e0716a;}
+@keyframes stell-pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.stell-avatar-wrap{position:relative;width:420px;height:420px;margin:0 auto -155px;}
+.stell-avatar-wrap svg{position:absolute;top:0;left:0;width:420px;height:420px;pointer-events:none;}
+.stell-avatar-wrap svg .stell-crown-txt{font-family:'Elfique';font-size:18px;fill:var(--textColorAccent);letter-spacing:2px;}
+.stell-avatar{position:absolute;top:115px;left:115px;width:190px;height:190px;border-radius:50%;object-fit:cover;border:3px solid var(--co-1);box-shadow:0 0 10px var(--co-1),0 0 22px var(--co-3);display:block;}
+.stell-idcard{text-align:center;margin-top:110px;}
+.stell-pseudo{font-family:'Nebula';font-size:34px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;margin:0;}
+.stell-verified{font-size:20px;vertical-align:middle;margin-left:4px;}
+.stell-subrow{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;}
+.stell-realname{font-family:'Daisy';font-size:16px;color:var(--contrast);letter-spacing:1px;margin:0;}
+.stell-sep{color:var(--co-1);font-size:12px;}
+.stell-signe{display:inline-flex;align-items:center;gap:6px;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin:0;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stell-signe i{font-size:15px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stell-stats{display:flex;justify-content:center;gap:36px;margin:22px 0;}
+.stell-stats div{text-align:center;}
+.stell-stats b{display:block;font-size:19px;color:var(--textColorAccent);font-weight:600;font-family:'Libre Baskerville';}
+.stell-stats span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--textColorAccent);}
+.stell-divider{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:10px;margin:20px auto;width:fit-content;max-width:92%;}
+.stell-divider-line{flex:1 1 80px;min-width:80px;height:1px;background:var(--co-gradient);}
+.stell-divider i{font-size:13px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stell-divider-elf{font-family:'Elfique';font-size:14px;color:var(--textColorAccent);opacity:.85;white-space:nowrap;}
+.stell-content-block{background:var(--neutralDark);border-radius:24px;padding:24px;margin:0 auto;max-width:460px;}
+.stell-status-block{max-width:320px;margin:0 auto 18px;text-align:center;}
+.stell-status-label{display:inline-block;background:var(--co-gradient);color:var(--white);font-family:'Libre Baskerville';font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:4px 18px;border-radius:20px 20px 0 0;}
+.stell-status-label i{color:var(--white)!important;}
+.stell-mood{background:var(--lighter);border-radius:4px 16px 16px 16px;text-align:center;padding:10px 16px;margin:0;}
+.stell-mood i4{text-transform:none;font-size:14px;}
+.stell-mood i{margin-right:6px;}
+.stell-bio{text-align:left;font-family:var(--font);font-size:14px;line-height:1.6;color:var(--textColor);text-transform:none;margin:0;}
+.stell-spotify{display:flex;align-items:center;gap:14px;background:linear-gradient(var(--lighter),var(--lighter)) padding-box,var(--co-gradient) border-box;border:1.5px solid transparent;border-radius:50px;padding:6px 20px 6px 6px;margin:20px 0 0;}
+.stell-vinyle-img{width:46px;height:46px;border-radius:50%;flex-shrink:0;object-fit:cover;background:transparent;}
+.stell-spotify-info{flex:1;overflow:hidden;}
+.stell-spotify-info b{display:block;font-family:'Daisy';font-size:22px;color:var(--contrast);font-weight:400;white-space:nowrap;}
+.stell-spotify-info span{font-size:11px;color:var(--textColorAccent);}
+.stell-jam{font-family:'Libre Baskerville';font-weight:600;font-size:11px;background:var(--co-gradient);border-radius:20px;padding:6px 14px;color:var(--white);white-space:nowrap;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block;}
+.stell-jam:hover{opacity:.8;}
+.stell-section-title{display:inline-flex;align-items:center;gap:8px;font-family:'Nebula';font-size:28px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 16px;}
+.stell-section-title i{font-size:22px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stell-pinned-title-wrap{text-align:center;}
+.stell-pinned-grid{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:16px;max-width:524px;margin:0 auto;}
+.stell-pin{width:92px;text-align:center;}
+.stell-pin-img{width:92px;height:92px;border-radius:45% 55% 60% 40%/55% 45% 55% 45%;background-size:cover;background-position:center;border:2px solid var(--co-1);box-shadow:0 0 8px var(--co-1),0 0 14px var(--co-3);margin-bottom:6px;transition:border-radius .6s;}
+.stell-pin:hover .stell-pin-img{border-radius:60% 40% 45% 55%/45% 55% 40% 60%;}
+.stell-pin span{font-size:11px;color:var(--textColorAccent);font-family:'Libre Baskerville';}
+.stell-suivis{margin-top:36px;background:linear-gradient(var(--neutralDark),var(--neutralDark)) padding-box,var(--co-gradient) border-box;border:1.5px solid transparent;border-radius:40px 100px 40px 100px/90px 40px 90px 40px;padding:34px 30px;box-shadow:0 0 18px var(--co-1),0 0 30px var(--co-3);text-align:center;}
+.stell-suivis-sub{font-family:'Daisy';font-size:32px;color:var(--textColorAccent);margin:0 0 18px;text-transform:none;}
+.stell-follow-row{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:20px;transition:background .3s;text-align:left;}
+.stell-follow-row:hover{background:var(--lighter);}
+.stell-follow-avatar{width:48px;height:48px;border-radius:50%;flex-shrink:0;object-fit:cover;border:2px solid var(--co-1);}
+.stell-follow-info{flex:1;}
+.stell-follow-info b{display:block;font-family:'Nebula';font-size:16px;color:var(--contrast);font-weight:400;}
+.stell-follow-info span{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--co-1);letter-spacing:1px;text-transform:uppercase;}
+.stell-follow-active{font-size:11px;color:var(--textColor);font-style:normal;text-transform:none;font-family:var(--font);white-space:nowrap;}
+
+/* ===== STELLARY - TRONC COMMUN A TOUS LES POSTS (photo / carrousel / citation / musique / carrousel mixte) ===== */
+
+.stell-post-wrap{display:flex;justify-content:center;}
+.stell-post-card{position:relative;width:300px;height:560px;border-radius:28px;overflow:hidden;box-shadow:0 0 18px var(--co-1),0 0 30px var(--co-3);background:var(--neutralDark);}
+
+/* voile sombre en haut/bas pour la lisibilité du texte - une variante par type de poste */
+.stell-post-card.stell-card-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.55) 0%, transparent 22%, transparent 68%, rgba(0,0,0,.75) 100%);z-index:1;pointer-events:none;}
+.stell-post-card.stell-card-carousel::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.55) 0%, transparent 26%, transparent 68%, rgba(0,0,0,.75) 100%);z-index:1;pointer-events:none;}
+.stell-post-card.stell-card-quote::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.45) 0%, transparent 26%, transparent 68%, rgba(0,0,0,.6) 100%);z-index:1;pointer-events:none;}
+.stell-post-card.stell-card-music::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.35) 26%, rgba(0,0,0,.35) 68%, rgba(0,0,0,.65) 100%);z-index:1;pointer-events:none;}
+.stell-post-card.stell-card-mixed::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.3) 26%, rgba(0,0,0,.3) 68%, rgba(0,0,0,.65) 100%);z-index:1;pointer-events:none;}
+
+/* barre du haut : avatar + pseudo + horodatage + public/privé */
+.stell-post-topbar{position:absolute;top:16px;left:16px;right:16px;z-index:3;display:flex;align-items:center;gap:10px;}
+.stell-post-card.stell-card-carousel .stell-post-topbar,
+.stell-post-card.stell-card-mixed .stell-post-topbar{top:32px;pointer-events:none;}
+.stell-post-avatar-ring{width:42px;height:42px;border-radius:50%;padding:2px;flex-shrink:0;}
+.stell-post-avatar-ring.public{background:#f0c987;box-shadow:0 0 8px #f0c987;}
+.stell-post-avatar-ring.private{background:#a78bfa;box-shadow:0 0 8px #a78bfa;}
+.stell-post-avatar-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--neutralDark);display:block;}
+.stell-post-who b{display:block;font-family:'Nebula';font-size:16px;color:#ffffff;}
+.stell-post-who span{font-size:11px;color:#ddd;letter-spacing:.5px;}
+.stell-post-vis{margin-left:auto;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#ffffff;display:flex;align-items:center;gap:4px;}
+.stell-post-vis i{color:#ffffff!important;}
+
+/* barre du bas : reactions (fixe, ne bouge jamais peu importe le type de poste) */
+.stell-post-bottom{position:absolute;left:16px;right:16px;bottom:16px;z-index:3;}
+.stell-post-caption{font-family:'Libre Baskerville';font-size:14px;line-height:1.5;color:#fff;margin:0 0 14px;text-shadow:0 1px 4px rgba(0,0,0,.6);}
+.stell-post-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.stell-react-group{display:flex;gap:8px;}
+.stell-react{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:16px;cursor:pointer;transition:all .3s;}
+.stell-react:hover{transform:scale(1.12);}
+.stell-react.sun:hover{background:#f0c987;box-shadow:0 0 10px #f0c987;color:#1a1424;}
+.stell-react.moon:hover{background:#a7b8f0;box-shadow:0 0 10px #a7b8f0;color:#1a1424;}
+.stell-comment-choice{display:flex;gap:6px;}
+.stell-comment-btn{display:flex;align-items:center;gap:5px;font-family:'Libre Baskerville';font-size:11px;padding:8px 12px;border-radius:20px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;transition:all .3s;white-space:nowrap;text-decoration:none;}
+.stell-comment-btn:hover{background:var(--co-gradient);border-color:transparent;}
+
+/* image de fond simple (post photo unique) */
+.stell-post-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+
+/* carrousel (images seules OU melange image/musique/citation) */
+.stell-slides{position:absolute;inset:0;z-index:0;}
+.stell-slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;}
+.stell-slide-img.stell-active{opacity:1;}
+.stell-panel-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.stell-panel-bg-gradient{position:absolute;inset:0;background:radial-gradient(circle at 20% 20%, var(--co-1) 0%, transparent 55%),radial-gradient(circle at 85% 85%, var(--co-3) 0%, transparent 55%);opacity:.35;}
+.stell-panel-caption{position:absolute;left:16px;right:16px;bottom:90px;font-family:'Libre Baskerville';font-size:14px;line-height:1.5;color:#fff;margin:0;text-shadow:0 1px 4px rgba(0,0,0,.6);}
+.stell-tap-left,.stell-tap-right{position:absolute;top:0;bottom:0;width:50%;z-index:2;cursor:pointer;}
+.stell-tap-left{left:0;}
+.stell-tap-right{right:0;}
+.stell-progress{position:absolute;top:12px;left:16px;right:16px;z-index:3;display:flex;gap:4px;}
+.stell-progress-bar{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s;}
+
+/* bloc citation (post citation seul OU slide citation d'un carrousel mixte) */
+.stell-text-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 20% 20%, var(--co-1) 0%, transparent 55%),radial-gradient(circle at 85% 85%, var(--co-3) 0%, transparent 55%);opacity:.35;}
+.stell-text-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:60px 32px;text-align:center;}
+.stell-slide-img .stell-text-content{padding-bottom:90px;}
+.stell-quote-divider{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:180px;}
+.stell-quote-divider-line{flex:1 1 30px;min-width:30px;height:1px;background:var(--co-gradient);}
+.stell-quote-divider i{font-size:13px;background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stell-text-quote{font-family:'Libre Baskerville';font-style:italic;font-size:19px;line-height:1.6;color:var(--textColorAccent);margin:0;text-shadow:0 1px 6px rgba(0,0,0,.35);}
+
+/* bloc musique (post musique seul OU slide musique d'un carrousel mixte) */
+.stell-music-bg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
+.stell-music-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 32px;text-align:center;}
+.stell-slide-img .stell-music-content{padding-bottom:90px;}
+.stell-vinyl-img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:transparent;box-shadow:0 0 14px var(--co-1),0 0 26px var(--co-3);}
+.stell-eq{display:flex;align-items:flex-end;gap:4px;height:18px;}
+.stell-eq span{display:block;width:4px;background:var(--co-gradient);border-radius:2px;animation:stell-eq-bounce 1s ease-in-out infinite;}
+.stell-eq span:nth-child(1){animation-delay:0s;}
+.stell-eq span:nth-child(2){animation-delay:.2s;}
+.stell-eq span:nth-child(3){animation-delay:.4s;}
+.stell-eq span:nth-child(4){animation-delay:.1s;}
+@keyframes stell-eq-bounce{0%,100%{height:4px;}50%{height:18px;}}
+.stell-music-title{font-family:'Daisy';font-size:24px;color:var(--textColorAccent);margin:0;}
+.stell-music-artist{font-family:'Libre Baskerville';font-size:13px;color:var(--textColorAccent);opacity:.85;margin:0;letter-spacing:.5px;}
+.stell-music-link{margin-top:6px;font-family:'Libre Baskerville';font-weight:600;font-size:11px;background:var(--co-gradient);color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;white-space:nowrap;transition:opacity .3s;}
+.stell-music-link:hover{opacity:.8;}
