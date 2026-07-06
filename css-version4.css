@@ -4960,6 +4960,8 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .pa-fae-shell {
   position: relative;
   background: var(--neutral);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: var(--border);
   border-radius: 40px 12px 40px 12px;
   padding: 26px;
@@ -5084,7 +5086,10 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 .pa-fae-news-title .cp {
   font-size: 13px;
-  color: var(--co-1);
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 .pa-fae-news ul {
   list-style: none;
@@ -5232,13 +5237,20 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 8px;
   font-family: 'Glamour';
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 18px;
   letter-spacing: 1.5px;
   color: var(--co-1);
+}
+.playlist-title .cp {
+  font-size: 15px;
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 .pa-cyber-playlist-v3 iframe {
   display: block;
