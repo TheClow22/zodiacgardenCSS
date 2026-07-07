@@ -5056,15 +5056,15 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ====================================== */
-/* HALO DECORATIF AUTOUR DE L'ARCHE (2 arcs flottants + fleurs) */
+/* HALO DECORATIF AUTOUR DE L'ARCHE (contour en 2 moities + roses) */
 /* ====================================== */
 
 .pa-arche-halo {
   position: absolute;
-  top: -45px;
-  left: -45px;
-  width: 290px;
-  height: 413px;
+  top: -20px;
+  left: -20px;
+  width: 240px;
+  height: 363px;
   pointer-events: none;
 }
 .pa-arche-halo path {
@@ -5076,7 +5076,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   0%, 100% { stroke: var(--co-1); }
   50% { stroke: var(--co-3); }
 }
-.pa-arche-halo .th {
+.pa-arche-rose {
   position: absolute;
   font-size: 20px;
   transform: translate(-50%, -50%);
