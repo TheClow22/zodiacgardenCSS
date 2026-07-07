@@ -5131,7 +5131,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   background: var(--co-gradient);
   border-radius: 50%;
 }
-.meteo-icon .cp { font-size: 22px; color: white; }
+.meteo-icon .th { font-size: 22px; color: white; }
 .meteo-info { flex: 1; }
 .meteo-info bg3 {
   font-size: 9px;
