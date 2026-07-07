@@ -4986,6 +4986,12 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
+}
+.pa-arche-wrap {
+  position: relative;
+  width: 200px;
+  height: 323px;
 }
 .pa-arch-cyber {
   position: relative;
@@ -4995,7 +5001,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   align-items: center;
   width: 200px;
   height: 323px;
-  border-radius: 150px 150px var(--radius) var(--radius);
+  border-radius: var(--radius) var(--radius) 150px 150px;
   color: white;
   overflow: hidden;
   outline: 2px solid transparent;
@@ -5050,6 +5056,38 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 }
 
 /* ====================================== */
+/* HALO DECORATIF AUTOUR DE L'ARCHE (2 arcs flottants + fleurs) */
+/* ====================================== */
+
+.pa-arche-halo {
+  position: absolute;
+  top: -45px;
+  left: -45px;
+  width: 290px;
+  height: 413px;
+  pointer-events: none;
+}
+.pa-arche-halo path {
+  fill: none;
+  stroke-width: 1.4;
+  animation: paFaeArcPulse 3s ease-in-out infinite;
+}
+@keyframes paFaeArcPulse {
+  0%, 100% { stroke: var(--co-1); }
+  50% { stroke: var(--co-3); }
+}
+.pa-arche-halo .th {
+  position: absolute;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 4px var(--co-3));
+}
+
+/* ====================================== */
 /* CHRONIQUES DE VAL ASTRA — style manchette de journal */
 /* ====================================== */
 
@@ -5091,10 +5129,31 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
+.pa-fae-news-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.pa-fae-news-divider .trait {
+  flex: 1;
+  height: 1px;
+  background: var(--co-1);
+  opacity: 0.35;
+}
+.pa-fae-news-divider .centre {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--co-1);
+}
 .pa-fae-news ul {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 6px;
+  padding: 0 4px 0 6px;
+  max-height: 92px;
+  overflow-y: auto;
 }
 .pa-fae-news li {
   font-size: 12px;
