@@ -3532,7 +3532,7 @@ html.js .category .forums .fs-panel.is-active{
 .identity-log .field_uneditable {
   margin-left: 0;
   font-family: 'Daisy';
-  font-size: 20px;
+  font-size: 18px;
   color: var(--textColorAccent);
 }
 
