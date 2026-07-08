@@ -3007,7 +3007,7 @@ html.js .category .forums .fs-panel.is-active{
 .avatar-border-rect {
   padding: 3px;
   background: var(--co-gradient);
-  border-radius: var(--radius);
+  border-radius: 20px 20px 150px 150px;
   margin-bottom: 10px;
   box-sizing: border-box;
   overflow: hidden;
@@ -3017,7 +3017,7 @@ html.js .category .forums .fs-panel.is-active{
 
 .avatar-wrapper-rect {
   background: var(--neutralDarker);
-  border-radius: var(--xs-radius);
+  border-radius: 17px 17px 147px 147px;
   overflow: hidden;
   width: 200px;
   height: 320px;
