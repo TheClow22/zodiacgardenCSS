@@ -3288,7 +3288,7 @@ html.js .category .forums .fs-panel.is-active{
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 390px;
+  height: 470px;
   background: var(--neutral);
 }
 
@@ -3324,8 +3324,8 @@ html.js .category .forums .fs-panel.is-active{
 
 .relationship-text {
   width: 100%;
-  min-height: 170px;
-  max-height: 250px; /* ← Limite la hauteur max */
+  min-height: 240px;
+  max-height: 320px; /* ← Limite la hauteur max */
   overflow-y: auto; /* ← Scroll interne si le texte dépasse */
   text-align: justify;
   color: var(--textColor);
