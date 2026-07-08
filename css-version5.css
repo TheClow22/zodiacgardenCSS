@@ -3842,6 +3842,36 @@ vertical-align: middle;
   display: block;
 }
 
+/* Ligne avec étoiles */
+.astro-divider {
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px var(--co-1));
+}
+
+.astro-divider path {
+  fill: none;
+  stroke: var(--co-2);
+  stroke-width: 1.5;
+}
+
+.astro-divider-spark path {
+  fill: var(--co-1);
+  transform-origin: center;
+  animation: astroSparkPulse 2.4s ease-in-out infinite;
+}
+
+.astro-divider-spark:nth-of-type(2) path {
+  animation-delay: .6s;
+}
+
+@keyframes astroSparkPulse {
+  0%, 100% { transform: scale(.75); opacity: .55; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
 /* ========================================
    CONSOMMATIONS - SYSTÈME D'ONGLETS & CARTES
    ======================================== */
