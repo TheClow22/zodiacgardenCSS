@@ -3416,12 +3416,15 @@ html.js .category .forums .fs-panel.is-active{
   background: var(--neutral);
   border-radius: 10px;
   overflow: hidden;
-  
-  /* Bordure dégradée extérieure type gaming */
   box-shadow: 
-    0 0 0 2px var(--co-3),
-    0 0 0 4px var(--neutralDark),
+    0 0 0 2px var(--neutralDark),
     0 4px 12px rgba(0,0,0,0.3);
+  animation: identityGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes identityGlowPulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--neutralDark), 0 0 14px rgba(0,0,0,0.15), 0 0 10px var(--co-1); }
+  50% { box-shadow: 0 0 0 2px var(--neutralDark), 0 0 18px rgba(0,0,0,0.15), 0 0 18px var(--co-3); }
 }
 
 /* Header gaming */
@@ -3437,47 +3440,15 @@ html.js .category .forums .fs-panel.is-active{
   overflow: hidden;
 }
 
-.identity-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255,255,255,0.2), 
-    transparent);
-  animation: scan 3s linear infinite;
-}
-
-@keyframes scan {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
 .identity-header .cp {
-  font-size: 12px;
+  font-size: 14px;
   color: white !important;
-  animation: blink 2s ease-in-out infinite;
-}
-
-.identity-header .cp:first-child {
-  animation-delay: 0s;
-}
-
-.identity-header .cp:last-child {
-  animation-delay: 1s;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
 }
 
 .identity-header h2 {
-  font-family: Matrix;
-  font-size: 12px;
+  font-family: Nebula;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
@@ -3502,30 +3473,11 @@ html.js .category .forums .fs-panel.is-active{
   border-radius: 8px;
   overflow: hidden;
   background: var(--neutralDarker);
-  border: 2px solid var(--co-2);
+  border: 2px solid var(--co-1);
   box-shadow: 
-    inset 0 2px 8px rgba(0,0,0,0.5),
-    0 0 12px rgba(93, 66, 175, 0.3);
+    inset 0 2px 8px rgba(0,0,0,0.4),
+    0 0 14px var(--co-1);
   position: relative;
-}
-
-.identity-screen::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.1) 2px,
-      rgba(0,0,0,0.1) 4px
-    );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .identity-screen img {
@@ -3553,77 +3505,33 @@ html.js .category .forums .fs-panel.is-active{
     0 0 8px rgba(224, 56, 174, 0.2);
 }
 
-.identity-log::before {
-  content: ">";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  color: var(--co-1);
-  font-weight: bold;
-  animation: cursor-blink 1s step-end infinite;
-}
-
-@keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
 .identity-log .field_uneditable {
-  margin-left: 12px;
-  font-family: 'Courier New', monospace;
-  font-style: italic;
+  margin-left: 0;
+  font-family: 'Ballet';
+  font-size: 15px;
   color: var(--textColorAccent);
 }
 
 /* Coins décoratifs UI gaming */
 .ui-corner {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   pointer-events: none;
-}
-
-.ui-corner::before,
-.ui-corner::after {
-  content: "";
-  position: absolute;
   background: var(--co-gradient);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  filter: drop-shadow(0 0 4px var(--co-1));
+  animation: uiStarTwinkle 2.6s ease-in-out infinite;
 }
 
-/* Top-left */
-.ui-tl {
-  top: -2px;
-  left: -2px;
-}
-.ui-tl::before {
-  top: 0;
-  left: 0;
-  width: 14px;
-  height: 2px;
-}
-.ui-tl::after {
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 14px;
-}
+.ui-tl { top: -3px; left: -3px; animation-delay: 0s; }
+.ui-tr { top: -3px; right: -3px; animation-delay: .6s; }
+.ui-bl { bottom: -3px; left: -3px; animation-delay: 1.2s; }
+.ui-br { bottom: -3px; right: -3px; animation-delay: 1.8s; }
 
-/* Top-right */
-.ui-tr {
-  top: -2px;
-  right: -2px;
-}
-.ui-tr::before {
-  top: 0;
-  right: 0;
-  width: 14px;
-  height: 2px;
-}
-.ui-tr::after {
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 14px;
+@keyframes uiStarTwinkle {
+  0%, 100% { transform: scale(0.75) rotate(0deg); opacity: 0.55; }
+  50% { transform: scale(1.15) rotate(20deg); opacity: 1; }
 }
 
 /* Bottom-left */
