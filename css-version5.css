@@ -3228,41 +3228,6 @@ html.js .category .forums .fs-panel.is-active{
   font-size: 12px;
 }
 
-/* Aesthetic */
-.aes-module .module-content {
-  height: 230px;
-  overflow-y: auto;
-  color: var(--textColor);
-  line-height: 1;
-  font-size: 13px;
-  background: var(--neutral);
-  padding: 15px;
-}
-
-#aes-content-target {
-  width: 100%;
-}
-
-.aes-content .field_uneditable {
-  width: 100%;
-  min-height: 200px;
-  display: block;
-  padding: 12px;
-  background: var(--neutralDark);
-  border-radius: 8px;
-}
-
-.aes-content .field_uneditable img {
-  margin: 0 !important;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.aes-content .field_uneditable * {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
 /* Balises stylisées */
 .new-profile-container b,
 .new-profile-container strong {
@@ -3803,16 +3768,57 @@ vertical-align: middle;
   left: auto !important;
   bottom: auto !important;
 }
-/* Forcer le champ éditable AES à rester en place */
-.aes-content .field_editable {
-  position: relative !important;
-  top: 0 !important;
-  margin-top: -530px !important; /* Remonter de la hauteur du min-height */
+.aes-module .module-content {
+  padding: 15px;
+  background: var(--neutral);
 }
 
-/* Ou alternative : forcer le conteneur à ne pas scroller automatiquement */
-.aes-module .module-content {
-  scroll-behavior: auto !important;
+/* Boussole Céleste */
+.boussole-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.boussole-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  background: var(--neutralDark);
+  border-radius: 16px 6px 16px 6px;
+  padding: 14px 8px;
+  transition: all .3s ease;
+}
+
+.boussole-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.boussole-icon {
+  font-size: 22px;
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.boussole-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--co-2);
+}
+
+.boussole-value {
+  font-size: 11px;
+  color: var(--textColor);
+  line-height: 1.3;
+  display: block;
 }
 
 /* ========================================
