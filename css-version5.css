@@ -3288,7 +3288,7 @@ html.js .category .forums .fs-panel.is-active{
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 470px;
+  height: 420px;
   background: var(--neutral);
 }
 
@@ -3324,8 +3324,8 @@ html.js .category .forums .fs-panel.is-active{
 
 .relationship-text {
   width: 100%;
-  min-height: 240px;
-  max-height: 320px; /* ← Limite la hauteur max */
+  min-height: 195px;
+  max-height: 270px; /* ← Limite la hauteur max */
   overflow-y: auto; /* ← Scroll interne si le texte dépasse */
   text-align: justify;
   color: var(--textColor);
@@ -3446,8 +3446,8 @@ html.js .category .forums .fs-panel.is-active{
 /* Zone image - TAILLE RÉDUITE */
 .identity-screen {
   width: 100%;
-  height: 150px;
-  border-radius: 60px 60px 8px 8px;
+  height: 125px;
+  border-radius: 45px 45px 8px 8px;
   overflow: hidden;
   background: var(--neutralDarker);
   border: 2px solid var(--co-1);
@@ -3488,8 +3488,8 @@ html.js .category .forums .fs-panel.is-active{
 
 /* Zone texte - TAILLE RÉDUITE */
 .identity-log {
-  min-height: 55px;
-  max-height: 65px;
+  min-height: 42px;
+  max-height: 52px;
   overflow-y: auto;
   background: transparent;
   border: none;
