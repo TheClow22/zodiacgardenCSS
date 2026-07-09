@@ -3529,9 +3529,20 @@ html.js .category .forums .fs-panel.is-active{
   box-shadow: none;
   padding: 8px 6px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   position: relative;
+}
+.identity-log .field_editable {
+  width: 100%;
+}
+
+.identity-log textarea.inputbox {
+  display: block;
+  width: 100%;
+  max-height: 48px;
+  overflow-y: auto;
+  resize: none;
 }
 
 .identity-log::before {
