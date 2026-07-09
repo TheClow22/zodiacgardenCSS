@@ -3288,7 +3288,7 @@ html.js .category .forums .fs-panel.is-active{
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 465px;
+  height: 430px;
   background: var(--neutral);
 }
 
@@ -3446,11 +3446,11 @@ html.js .category .forums .fs-panel.is-active{
 /* Zone image - TAILLE RÉDUITE */
 .identity-screen {
   width: 100%;
-  height: 125px;
+  height: 117px;
   border-radius: 45px 45px 8px 8px;
   overflow: hidden;
   background: var(--neutralDarker);
-  border: 2px solid var(--co-1);
+  border: 1,5px solid var(--co-1);
   box-shadow: 
     inset 0 2px 8px rgba(0,0,0,0.4),
     0 0 14px var(--co-1);
