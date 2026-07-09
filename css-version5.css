@@ -3388,7 +3388,7 @@ html.js .category .forums .fs-panel.is-active{
 .identity-frame {
   position: relative;
   background: var(--neutral);
-  border-radius: 10px;
+  border-radius: 2px 22px 2px 22px;
   overflow: hidden;
   box-shadow: 
     0 0 0 2px var(--neutralDark),
@@ -3434,7 +3434,7 @@ html.js .category .forums .fs-panel.is-active{
 
 .identity-header h2 {
   font-family: Glamour;
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
