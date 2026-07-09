@@ -3036,6 +3036,9 @@ html.js .category .forums .fs-panel.is-active{
   font-weight: 600;
   color: var(--contrast);
   display: inline-block;
+  width: 200px;
+  box-sizing: border-box;
+  text-align: left;
 }
 .avatar-divider {
   display: flex;
