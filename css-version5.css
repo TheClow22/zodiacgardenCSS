@@ -3037,6 +3037,34 @@ html.js .category .forums .fs-panel.is-active{
   color: var(--contrast);
   display: inline-block;
 }
+.avatar-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 2px 0 10px;
+}
+
+.avatar-divider .trait {
+  flex: 1;
+  height: 1px;
+  background: var(--co-gradient);
+  opacity: 0.5;
+}
+
+.avatar-divider .centre {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.avatar-divider .centre span {
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
 
 /* Contacts */
 .profile-contacts {
