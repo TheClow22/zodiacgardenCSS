@@ -3288,7 +3288,7 @@ html.js .category .forums .fs-panel.is-active{
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 420px;
+  height: 465px;
   background: var(--neutral);
 }
 
@@ -3304,8 +3304,8 @@ html.js .category .forums .fs-panel.is-active{
 }
 
 .relationship-image {
-  width: 200px;  /* ← RÉDUIT de 200 à 180 */
-  height: 130px;  /* ← RÉDUIT de 200 à 180 */
+  width: 220px;  /* ← RÉDUIT de 200 à 180 */
+  height: 155px;  /* ← RÉDUIT de 200 à 180 */
   border-radius: var(--radius);
   overflow: hidden;
   border: 3px solid transparent;
@@ -3325,7 +3325,7 @@ html.js .category .forums .fs-panel.is-active{
 .relationship-text {
   width: 100%;
   min-height: 195px;
-  max-height: 270px; /* ← Limite la hauteur max */
+  max-height: 280px; /* ← Limite la hauteur max */
   overflow-y: auto; /* ← Scroll interne si le texte dépasse */
   text-align: justify;
   color: var(--textColor);
@@ -3467,7 +3467,7 @@ html.js .category .forums .fs-panel.is-active{
   position: absolute;
   inset: 0;
   border: 1.5px solid var(--co-1);
-  border-radius: 68px 68px 14px 14px;
+  border-radius: 61px 61px 17px 17px;
   opacity: 0.5;
   pointer-events: none;
   animation: mirrorRingGlow 4s ease-in-out infinite;
@@ -3518,7 +3518,7 @@ html.js .category .forums .fs-panel.is-active{
 .identity-log .field_uneditable {
   margin-left: 0;
   font-family: 'Daisy';
-  font-size: 18px;
+  font-size: 20px;
   color: var(--textColorAccent);
 }
 
