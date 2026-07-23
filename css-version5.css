@@ -5898,4 +5898,154 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .repert-portrait-glow {
   position: absolute;
   inset: 6px;
-  border-radius: 14px
+  border-radius: 14px 14px 100px 100px;
+  background: var(--co-gradient);
+  filter: blur(20px);
+  opacity: .35;
+  animation: fiche-glow-respire 4s ease-in-out infinite;
+}
+
+.repert-portrait {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 240px;
+  border-radius: 12px 12px 100px 100px;
+  overflow: hidden;
+  border: 1px solid var(--co-1);
+  background: var(--neutralDarker);
+}
+
+.repert-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.repert-etincelle {
+  position: absolute;
+  font-size: 12px;
+  z-index: 2;
+  animation: fiche-etincelle-flotte 3s ease-in-out infinite;
+}
+
+.repert-etincelle.co1 { color: var(--co-1); }
+.repert-etincelle.co2 { color: var(--co-2); }
+
+.repert-pastilles {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -22px;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+.repert-pastille {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--neutralDarker);
+  border: 1px solid var(--co-1);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--textColorAccent);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.repert-pastille .cp {
+  font-size: 11px;
+  color: var(--co-1);
+}
+
+.repert-nom {
+  flex-shrink: 0;
+  font-family: 'Glamour';
+  text-transform: uppercase;
+  font-size: 22px;
+  letter-spacing: 1px;
+  background: var(--co-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 12px 0 10px;
+}
+
+.repert-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.repert-scroll:hover {
+  scrollbar-color: var(--co-1) transparent;
+}
+
+.repert-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.repert-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.repert-scroll:hover::-webkit-scrollbar-thumb {
+  background: var(--co-1);
+}
+
+.repert-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.repert-info-bloc {
+  background: var(--neutral);
+  border-radius: 6px 16px 6px 16px;
+  padding: 8px 12px;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.repert-info-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--co-2);
+  margin-bottom: 3px;
+}
+
+.repert-info-label .cp {
+  font-size: 12px;
+  color: var(--co-1);
+}
+
+.repert-info-texte {
+  color: var(--textColor);
+}
+
+.repert-libre {
+  background: var(--neutralDark);
+  border-radius: 16px 6px 16px 6px;
+  padding: 10px 12px;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--textColor);
+  text-align: left;
+}
