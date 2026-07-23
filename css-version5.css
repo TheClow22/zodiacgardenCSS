@@ -5806,7 +5806,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   padding: 20px 10px 60px;
 }
 
-/* ---------- Onglets ---------- */
 .repert-tabs-nav {
   display: flex;
   justify-content: center;
@@ -5862,24 +5861,21 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   animation: fromzero .5s forwards;
 }
 
-/* ---------- Grille (3 fiches par ligne) ---------- */
 .repert-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 26px;
 }
 
-@media (max-width: 900px) {
-  .repert-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .repert-grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- Carte personnage ---------- */
 .repert-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 620px;
   background: var(--lighter);
   border-radius: 20px 20px 90px 90px;
   padding: 18px 16px 20px;
@@ -5892,142 +5888,14 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   box-shadow: 0 10px 26px rgba(0,0,0,0.18);
 }
 
-/* Portrait en arche inversée (même esprit que tes fiches de présentation) */
 .repert-portrait-zone {
   position: relative;
   padding: 4px;
   margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
 .repert-portrait-glow {
   position: absolute;
   inset: 6px;
-  border-radius: 14px 14px 100px 100px;
-  background: var(--co-gradient);
-  filter: blur(20px);
-  opacity: .35;
-  animation: fiche-glow-respire 4s ease-in-out infinite;
-}
-
-.repert-portrait {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 240px;
-  border-radius: 12px 12px 100px 100px;
-  overflow: hidden;
-  border: 1px solid var(--co-1);
-  background: var(--neutralDarker);
-}
-
-.repert-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.repert-etincelle {
-  position: absolute;
-  font-size: 12px;
-  z-index: 2;
-  animation: fiche-etincelle-flotte 3s ease-in-out infinite;
-}
-
-.repert-etincelle.co1 { color: var(--co-1); }
-.repert-etincelle.co2 { color: var(--co-2); }
-
-/* Pastilles âge + signe, à cheval sur le bas du portrait */
-.repert-pastilles {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: -22px;
-  position: relative;
-  z-index: 3;
-}
-
-.repert-pastille {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--neutralDarker);
-  border: 1px solid var(--co-1);
-  border-radius: 20px;
-  padding: 4px 11px;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--textColorAccent);
-  box-shadow: 0 2px 8px rgba(0,0,0,.25);
-}
-
-.repert-pastille .cp {
-  font-size: 11px;
-  color: var(--co-1);
-}
-
-/* Nom du personnage */
-.repert-nom {
-  font-family: 'Glamour';
-  text-transform: uppercase;
-  font-size: 22px;
-  letter-spacing: 1px;
-  background: var(--co-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 12px 0 14px;
-}
-
-/* Les 3 blocs d'infos fixes (amour / particularités / activité) */
-.repert-infos {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-  margin-bottom: 12px;
-}
-
-.repert-info-bloc {
-  background: var(--neutral);
-  border-radius: 6px 16px 6px 16px;
-  padding: 8px 12px;
-  font-size: 11.5px;
-  line-height: 1.5;
-}
-
-.repert-info-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-3);
-  text-transform: uppercase;
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: var(--co-2);
-  margin-bottom: 3px;
-}
-
-.repert-info-label .cp {
-  font-size: 12px;
-  color: var(--co-1);
-}
-
-.repert-info-texte {
-  color: var(--textColor);
-}
-
-/* Bloc libre en bas (famille, dynastie, notes diverses) */
-.repert-libre {
-  background: var(--neutralDark);
-  border-radius: 16px 6px 16px 6px;
-  padding: 10px 12px;
-  font-size: 11px;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--textColor);
-  text-align: left;
-  max-height: 90px;
-  overflow-y: auto;
-}
+  border-radius: 14px
