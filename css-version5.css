@@ -5905,11 +5905,12 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   animation: fiche-glow-respire 4s ease-in-out infinite;
 }
 
+/* Portrait : agrandi en hauteur pour un effet plus vertical */
 .repert-portrait {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 240px;
+  height: 300px;
   border-radius: 12px 12px 100px 100px;
   overflow: hidden;
   border: 1px solid var(--co-1);
@@ -5976,7 +5977,53 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   margin: 12px 0 10px;
 }
 
+/* Zone qui contient les sous-onglets + le panneau actif */
 .repert-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sous-onglets DANS la carte : "Infos" / "Plus" */
+.repert-subtabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.repert-subtab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  background: var(--neutral);
+  border: 1px solid var(--neutralDark);
+  border-radius: 14px;
+  font-family: var(--font-3);
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--textColor);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.repert-subtab-btn:hover {
+  border-color: var(--co-1);
+}
+
+.repert-subtab-btn.active {
+  background: var(--co-gradient);
+  border-color: transparent;
+  color: white;
+}
+
+/* Panneau de contenu d'un sous-onglet : lui seul défile, avec ascenseur discret au survol */
+.repert-subtab-panel {
+  display: none;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
@@ -5985,20 +6032,24 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   scrollbar-color: transparent transparent;
 }
 
-.repert-scroll:hover {
+.repert-subtab-panel.active {
+  display: block;
+}
+
+.repert-subtab-panel:hover {
   scrollbar-color: var(--co-1) transparent;
 }
 
-.repert-scroll::-webkit-scrollbar {
+.repert-subtab-panel::-webkit-scrollbar {
   width: 3px;
 }
 
-.repert-scroll::-webkit-scrollbar-thumb {
+.repert-subtab-panel::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 10px;
 }
 
-.repert-scroll:hover::-webkit-scrollbar-thumb {
+.repert-subtab-panel:hover::-webkit-scrollbar-thumb {
   background: var(--co-1);
 }
 
@@ -6007,7 +6058,6 @@ a.fsb-btn:hover{color:var(--co-3)!important}
   flex-direction: column;
   gap: 8px;
   text-align: left;
-  margin-bottom: 8px;
 }
 
 .repert-info-bloc {
