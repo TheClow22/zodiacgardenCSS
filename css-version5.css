@@ -4889,7 +4889,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fsb-pop.is-open{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
 
 /* Header des panneaux — fond neutralDark distinct */
-.fsb-pop-header{background:var(--neutralDark);padding:12px 16px 8px;font-family:'Matrix',var(--font-3);font-size:var(--little-size);text-transform:uppercase;letter-spacing:2px;font-weight:bold;border-bottom:1px solid transparent;border-image:var(--co-gradient) 1;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:8px;white-space:nowrap}
+.fsb-pop-header{background:var(--neutralDark);padding:12px 16px 8px;font-family:'Nebula',var(--font-3);font-size:var(--little-size);text-transform:uppercase;letter-spacing:2px;font-weight:bold;border-bottom:1px solid transparent;border-image:var(--co-gradient) 1;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:8px;white-space:nowrap}
 .fsb-pop-header-text{background:var(--co-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .fsb-notif-count{background:var(--co-1);color:white;font-size:9px;padding:2px 8px;border-radius:10px;font-family:var(--font);-webkit-text-fill-color:white}
 
@@ -4921,7 +4921,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 .fsb-pop-qm:not(.is-open) .fsb-qm-link{animation:none;opacity:0}
 
 /* PSEUDO VERTICAL — tourné vers l'intérieur du forum */
-.fsb-username{writing-mode:vertical-lr;text-orientation:mixed;font-family:var(--font-3);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--textColorAccent)!important;font-weight:600!important;white-space:nowrap;max-height:none;margin:4px 0;opacity:.8;transition:opacity .3s,color .3s}
+.fsb-username{writing-mode:vertical-lr;text-orientation:mixed;font-family:'Glamour';font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--textColorAccent)!important;font-weight:600!important;white-space:nowrap;max-height:none;margin:4px 0;opacity:.8;transition:opacity .3s,color .3s}
 .fsb-username:hover{opacity:1;color:var(--co-3)!important}
 
 
