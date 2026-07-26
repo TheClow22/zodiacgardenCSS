@@ -784,7 +784,7 @@ h1.qeel_title i {
   justify-content: center;
   gap: 8px;
   background: var(--neutralDark);
-  border-radius: var(--radius);
+  border-radius: 8px 36px 8px 36px;
   padding: 15px 10px;
   height: 85px;
   position: relative;
@@ -850,7 +850,7 @@ h1.qeel_title i {
   gap: 25px;
   align-items: center;
   background: var(--neutralDark);
-  border-radius: var(--radius);
+  border-radius: 8px 36px 8px 36px;
   padding: 25px;
   min-height: 160px;
   position: relative;
@@ -862,7 +862,7 @@ h1.qeel_title i {
   content: '';
   position: absolute;
   inset: -2px;
-  border-radius: var(--radius);
+  border-radius: 8px 36px 8px 36px;
   padding: 2px;
   background: var(--co-1);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -1036,9 +1036,15 @@ h1.qeel_title i {
 
 .qeel-stats-simple > div {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 63px;
+  box-sizing: border-box;
   background: var(--neutralDark);
   border-radius: var(--radius);
-  padding: 16px 12px;
+  padding: 0 12px;
   text-align: center;
   border: 1px solid var(--co-2);
   box-shadow: 0 0 12px var(--co-1);
@@ -1046,16 +1052,15 @@ h1.qeel_title i {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: var(--small-size);
-  line-height: 1.4;
+  line-height: 1.3;
   transition: box-shadow 0.4s ease;
 }
 
 .qeel-stats-simple > div::before {
   content: '✦';
-  display: block;
   color: var(--co-1);
   font-size: var(--medium-size);
-  margin-bottom: 6px;
+  flex-shrink: 0;
 }
 
 .qeel-stats-simple > div:hover {
