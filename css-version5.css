@@ -5581,7 +5581,7 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 /* Petits "points de couture" le long de la reliure, pour le côté
    relié à la main façon grimoire ancien */
 .fiche-p2-reliure .ligne::before, .fiche-p2-reliure .ligne::after { content: ''; }
-.fiche-p2-fermoir { width: 30px; height: 30px; border-radius: 50%; background: var(--fiche-gradient3); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; box-shadow: 0 0 12px var(--co-1); flex-shrink: 0; position: relative; z-index: 2; margin: -1px 0; /* le fermoir chevauche légèrement la barre, comme une vraie boucle */; }
+.fiche-p2-fermoir { width: 30px; height: 30px; border-radius: 50%; background: var(--fiche-gradient3); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; box-shadow: 0 0 12px var(--co-1); flex-shrink: 0; position: relative; z-index: 2; margin: -1px 0; /* le fermoir chevauche légèrement la barre, comme une vraie boucle */ }
 
 /* ---------- Titre de section avec icône ---------- */
 .fiche-p2-section-titre { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-size: 26px; text-transform: uppercase; letter-spacing: 1.5px; }
@@ -5624,13 +5624,17 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 
 /* Chaque carte est légèrement pivotée différemment (voir HTML :
    style="transform:rotate(...)" par objet) pour casser l'alignement
-   strict, façon cartes posées sur une table */
-.fiche-p2-carte-objet { position: relative; display: flex; gap: 14px; align-items: center; background: var(--neutral); border-radius: 4px 22px 4px 22px; border: 1px solid var(--co-2); padding: 14px 16px; }
+   strict, façon cartes posées sur une table.
+   HAUTEUR FIXE : toutes les cartes ont la même taille quelle que soit
+   la longueur de la description (voir .fiche-p2-objet-desc plus bas
+   pour le défilement interne). align-items:stretch fait en sorte que
+   l'image et le bloc texte remplissent toute la hauteur de la carte. */
+.fiche-p2-carte-objet { position: relative; display: flex; gap: 14px; align-items: stretch; height: 132px; background: var(--neutral); border-radius: 4px 22px 4px 22px; border: 1px solid var(--co-2); padding: 14px 16px; }
 
 /* Cappuccicon en filigrane derrière la carte, selon la nature
    magique de l'objet (clé, fiole, plume, etc.) */
 .fiche-p2-carte-objet::before { content: attr(data-icone); position: absolute; right: 8px; bottom: 4px; font-family: 'cappuccicons'; font-size: 46px; color: var(--co-1); opacity: 0.08; pointer-events: none; z-index: 0; }
-.fiche-p2-objet-image { position: relative; z-index: 1; width: 64px; height: 84px; border-radius: 8px 8px 32px 32px; /* arche inversée, même esprit que le portrait du poste 1 */ overflow: hidden; border: 2px solid var(--co-1); flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.3); cursor: zoom-in; }
+.fiche-p2-objet-image { position: relative; z-index: 1; align-self: center; /* garde l'image bien centrée même si la carte est plus haute qu'elle */ width: 64px; height: 84px; border-radius: 8px 8px 32px 32px; /* arche inversée, même esprit que le portrait du poste 1 */ overflow: hidden; border: 2px solid var(--co-1); flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.3); cursor: zoom-in; }
 .fiche-p2-objet-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
 
 /* Effet zoom au survol : l'image s'agrandit et se détache du flux
@@ -5638,9 +5642,19 @@ a.fsb-btn:hover{color:var(--co-3)!important}
    sans décaler la mise en page. Pas de JS, compatible Forum Actif. */
 .fiche-p2-objet-image:hover { z-index: 50; }
 .fiche-p2-objet-image:hover img { position: fixed; top: 50%; left: 50%; width: 280px; height: 280px; transform: translate(-50%, -50%) scale(1); border-radius: 16px 16px 90px 90px; box-shadow: 0 0 40px rgba(0,0,0,0.7), 0 0 30px var(--co-1); z-index: 999; object-fit: cover; }
-.fiche-p2-objet-texte { position: relative; z-index: 1; flex: 1; }
-.fiche-p2-objet-nom { font-family: 'Nebula'; text-transform: uppercase; font-size: 16px; letter-spacing: 1px; background: var(--fiche-gradient3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 6px; }
-.fiche-p2-objet-desc { font-size: 12px; font-style: italic; color: var(--textColor); margin: 0; line-height: 1.4; }
+
+/* Colonne texte de la carte : devient un conteneur vertical, pour
+   que le nom reste fixe en haut et que la description prenne toute
+   la place restante en dessous (voir .fiche-p2-objet-desc) */
+.fiche-p2-objet-texte { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.fiche-p2-objet-nom { flex-shrink: 0; font-family: 'Nebula'; text-transform: uppercase; font-size: 16px; letter-spacing: 1px; background: var(--fiche-gradient3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 6px; }
+
+/* Description : zone à défilement interne à hauteur fixe. Si le
+   texte est court, aucun scroll n'apparaît. S'il est long, un petit
+   scroll fin en dégradé (déjà défini globalement dans le CSS commun,
+   pas besoin de le redéfinir ici) apparaît pour parcourir le texte
+   sans jamais agrandir la carte. */
+.fiche-p2-objet-desc { position: relative; z-index: 1; flex: 1; min-height: 0; overflow-y: auto; padding-right: 6px; font-size: 12px; font-style: italic; color: var(--textColor); margin: 0; line-height: 1.4; }
 
 /* SECTION DRESSING — moodboard vestimentaire pleine largeur, effet collage (images en grille, légèrement chevauchantes et pivotées, voir HTML pour les rotations individuelles) */
 .fiche-p2-dressing-section { margin-top: 40px; }
