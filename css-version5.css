@@ -3265,6 +3265,7 @@ html.js .category .forums .fs-panel.is-active{
 .new-profile-container #basic-info-target .field_uneditable {
   color: var(--textColor);
   font-size: 12px;
+  text-align: justify;
 }
 
 /* Balises stylisées */
