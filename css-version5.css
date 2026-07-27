@@ -3770,8 +3770,8 @@ vertical-align: middle;
 .header-gif-circle .field_editable {
   position: absolute !important;
   top: calc(100% + 5px) !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  left: 0 !important;
+  transform: none !important;
   width: 240px !important;
   background: var(--neutralDarker) !important;
   padding: 10px !important;
