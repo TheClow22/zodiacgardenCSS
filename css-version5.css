@@ -5426,8 +5426,8 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 @keyframes fiche-etoile-scintille { 0%, 100% { opacity: 1 } 50% { opacity: 0.5 } }
 .fiche-identite-colonne { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 10px 6px; }
 .fiche-pseudo-haut, .fiche-pseudo-bas { font-family: 'Nebula'; text-transform: uppercase; line-height: 1; background: var(--fiche-gradient3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0; letter-spacing: 0px; text-align: center; }
-.fiche-pseudo-haut { font-size: 40px; }
-.fiche-pseudo-bas { font-size: 35px; }
+.fiche-pseudo-haut { font-size: 37px; }
+.fiche-pseudo-bas { font-size: 32px; }
 .fiche-citation { display: block; margin: 4px 0; font-family: 'Daisy', 'Libre Baskerville', serif; font-size: 25px; font-style: normal; line-height: 1.3; letter-spacing: 0.3px; text-align: center; color: var(--textColorAccent); position: relative; padding-left: 14px; }
 .fiche-citation::before { content: '❝'; position: absolute; left: -4px; top: -2px; font-size: 16px; font-family: Georgia, serif; color: var(--co-1); opacity: 0.6; }
 
