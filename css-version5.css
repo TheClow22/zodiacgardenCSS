@@ -4915,11 +4915,11 @@ a.fsb-btn:hover{color:var(--co-3)!important}
 /* PANNEAU MENU RAPIDE — fond lighter */
 .fsb-pop-qm{width:230px;max-height:none;background:var(--lighter)}
 .fsb-qm-links{display:flex;flex-direction:column;padding:6px 0;overflow-y:auto;overflow-x:hidden}
-.fsb-qm-link{display:flex;align-items:center;gap:12px;padding:9px 16px;text-decoration:none!important;color:var(--textColorAccent)!important;font-size:var(--little-size);font-weight:500;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;transition:background .2s ease,color .2s ease;position:relative}
+.fsb-qm-link{display:flex;align-items:center;gap:10px;padding:6px 14px;text-decoration:none!important;color:var(--textColorAccent)!important;font-size:var(--little-size);font-weight:500;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;transition:background .2s ease,color .2s ease;position:relative}
 .fsb-qm-link:hover{background:var(--neutral);color:var(--co-3)!important}
 .fsb-qm-link::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:3px;height:60%;background:var(--co-gradient);border-radius:0 3px 3px 0;transition:transform .25s cubic-bezier(.4,0,.2,1)}
 .fsb-qm-link:hover::before{transform:translateY(-50%) scaleY(1)}
-.fsb-qm-icon{width:28px;height:28px;border-radius:8px;background:var(--neutral);color:var(--co-1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:background .2s ease,color .2s ease,transform .2s ease}
+.fsb-qm-icon{width:26px;height:26px;border-radius:8px;background:var(--neutral);color:var(--co-1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:background .2s ease,color .2s ease,transform .2s ease}
 .fsb-qm-link:hover .fsb-qm-icon{background:var(--co-gradient);color:white;transform:scale(1.08)}
 .fsb-qm-label{font-family:var(--font);letter-spacing:.3px}
 .fsb-pop-qm.is-open .fsb-qm-link{animation:fsb-slide .3s ease both}
